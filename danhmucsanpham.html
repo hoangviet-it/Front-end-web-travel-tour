@@ -1,0 +1,916 @@
+<!doctype html />
+<html>
+	<head>
+		<meta charset=UTF-8>
+		<meta name= "description" content = "Lập trình web font-end ">
+		<meta name= "keywords" content= "HTML, CSS, XML, JavaScript">
+		<meta name = "author" content = "Phạm Hoàng Việt">
+
+		<link rel="icon" type="image/png" href="./image/v.png">
+       <!--- <link rel="stylesheet" type="text/css" href="./css/dinhdang.css">-->
+
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="./bootstrap-3.4.1-dist/css/bootstrap.css">
+        <script src="./bootstrap-3.4.1-dist/js/jquery.min.js"></script>
+        <script src="./bootstrap-3.4.1-dist/js/bootstrap.js"></script>
+        <script src="./bootstrap-3.4.1-dist/js/less-1.7.0.min.js"></script>
+       
+		<title>Phạm Hoàng Việt </title>
+
+<!----================================================================================================================-->
+        <!--CSS-->
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+            html,body{
+                font-family: 'Lato', sans-serif;
+                overflow-x: hidden;
+            }
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+
+/*=============================================================================================================================*/
+            /* 1. định dạng phần navbar*/
+            .navbar .menu .navbar-header img{    /*hình logo*/
+                width: 220px;
+                margin-top: 6%;
+                margin-left: 6%;
+            }
+            .navbar .menu{
+                height: 78px;
+            }
+            .navbar{
+                background-color: #fff !important;
+                width: 100%;
+                position: fixed;
+                border-bottom: 1px solid #DDDDDD;
+                z-index: 10;
+                border-radius: 0px;
+            }
+            .navbar-collapse .navbar-nav .nav-item .nav-link{  /*khoảng cách trái giữa các item navbar + màu chữ*/
+                margin-right: 10px;
+                color: #000;
+            }
+            
+         /*   .navbar-brand{           /*định dạng logo thương hiệu*
+                margin-top: 10px;              
+            }*/
+
+        
+            .navbar-collapse .navbar-nav .nav-item .icon{       /*kích thước 2 icon navbar*/
+                font-size: 20px;
+            }
+            .navbar-collapse .navbar-nav{    /*thành phần menu cách trái*/
+                position: relative;
+                margin-left: 8%;
+                margin-top: 1%;
+            }
+            .navbar-collapse .navbar-nav .nav-item .nav-link .glyphicon-chevron-down{        /* tour icon xổ xuống*/
+                font-size: 13px;
+            }
+
+            .sub-timkiem{               /*thẻ li tìm kiếm*/
+                position: relative;   
+                margin-left: 20px;            
+            }
+            .o-timkiem{     /*phần tìm kiếm bị ẩn*/
+                display: none;  /*ẩn ô tìm kiếm*/
+                position: absolute;
+                z-index: 1;
+
+                width: 300px;
+                height: 100px;
+                background-color: #fff;
+                margin-left: -170px;
+                border-radius: 10px;
+                box-shadow: 3px 3px 10px 2px #333333;
+            }
+            .o-timkiem input{       /*ô nhập nội dung tìm kiếm*/
+                width: 190px;
+                height: 40px;
+                margin: 30px 0px 0px 20px;
+                border: 2px solid #BEBEBE;
+                border-radius: 5px;
+               
+            }
+            .o-timkiem a .nut-tk{         /*nút bấm tìm kiếm*/
+                width: 40px;
+                height: 39px;
+                background-color: #ffee00;
+                padding-top: 12px;
+                border-radius: 5px;
+                box-shadow: 3px 3px 5px #b8b6b6;
+                display: inline-block;      /*để định dạng chiều rộng*/
+            }
+            .o-timkiem a .nut-tk:hover{
+                background-color: #e7d802;
+            }
+            .o-timkiem a .nut-tk .glyphicon-search{     /*icon tìm kiếm của phần ẩn*/
+                margin-left: 13px;
+                color: #000;
+            }
+
+            .sub-timkiem:hover .o-timkiem{      /*hover hiện ô tìm kiếm*/
+                display: block;
+    
+            }
+
+            .navbar-nav .nav-link::after{       /*tạo phần tử ảo after trên a */
+                content: "";
+                height: 5px;
+                width: 0px;
+                background: red;
+                position: absolute;
+                bottom: 8px;
+                left: 0px;
+                transition: 0.5s ease-in-out;
+            }
+            .navbar-nav .nav-link:hover::after{     /*hover vào phần tử ảo tác động đến a */
+                width: 43%;
+                transform:translateX(100%) ;
+            }
+
+            .sub-menu{                  /* đặt li TOUR TRONG NƯỚC làm móc cha */
+                position: relative;
+             /*   display: inline-block;*/
+            }
+            .dropdown-content{          /* ẩn nội dung dropdown */
+                display: none;  
+                position: absolute;
+                z-index: 1;      /*để nội dung hiện nằm trên slide*/
+            }
+            .sub-menu:hover .dropdown-content{      /*hover hiện sub menu*/
+                display: block;
+            }
+
+            .navbar-collapse .navbar-nav .nav-item .dropdown-content{   /*định dạng kích thước sub menu*/
+                background-color: #000;
+                width: 250px;
+                height: 430px;
+                padding: 20px;
+                border-radius: 10px;
+                border: 1.5px solid #DDDDDD;
+            }
+            .navbar-collapse .navbar-nav .nav-item .dropdown-content .dropdown-item{    /*định dạng text trong sub menu*/
+                color: #fff;
+                font-size: 15px;
+                font-weight: bold;
+                text-decoration: none;
+                margin: 0px;
+               
+            }
+            .navbar-collapse .navbar-nav .nav-item .dropdown-content .dropdown-item:hover{
+                color:tomato;
+            }
+
+            /*icon user khách hàng*/
+            .login{                     /*phần chứa icon và phần ẩn(đăng nhập + đăng ký)*/
+                position: relative; 
+            }
+            .login .dk-and-dn{          /*phần ẩn 'đăng nhập + đăng ký' ẩn*/
+                display: none;
+                width: 150px;
+                height: 100px;
+                position: absolute;
+                z-index: 1;
+                background-color: #fff;
+                margin-left: -80px;
+                padding-top: 20px;
+                border-radius: 10px;
+                border: 1px solid #363636;
+            }
+            .login .dk-and-dn p{    /*chữ đăng ký + đăng nhập*/
+                color: #000;
+                font-size: 16px;
+                margin-left: 15px;
+            }
+            .login .dk-and-dn a{    /*thẻ a chứa chứa 2 chữ đăng ký + đăng nhập*/
+                text-decoration: none; 
+                background-color: #1c9cea;
+            }
+            .login .dk-and-dn div:hover{  /*div chứa a*/
+                background-color: #DDDDDD;
+            }
+            .login:hover .dk-and-dn{    /*hover hiện option đăng nhập*/
+                display: block;
+            }
+
+/*=============================================================================================================================*/
+        /* 2. phần nội dung menu bên trái*/
+
+            .content-main{              /*phần chứa 2 nội dung trái + phải*/
+                margin-top: 8%;
+                margin-left: 10%;
+                width: 80%;
+            }
+            .content-main .menu-left{           /*phần nội dung bên trái*/
+                width: 25%;
+                border-right: 1px solid #ddd;
+                float: left;
+            }
+            .content-main .menu-left .tieude-danhmuc{   /*thẻ p têu đề của các danh mục*/
+                font-size: 20px;
+                font-weight: bold;
+                border-bottom: 1px solid #BBBBBB;
+                padding-bottom: 5px;
+            }
+            .content-main .menu-left .dropdown{     /*khung chứa nút dropdowwn*/
+                margin-bottom: 10px;
+            }
+            .content-main .menu-left .dropdown button{  /*nút đropdown*/
+                border: none;
+                background-color: #fff;
+                width: 170px;
+                text-align: start;
+                font-size: 17px;
+                border-bottom: 1px solid #ddd;
+                margin-top: 5px;
+            }
+            .content-main .menu-left .dropdown ul{      /*khung ẩn dropđown*/
+                width: 190px;
+                border-radius: 8px;
+                
+            }
+            .content-main .menu-left .dropdown ul li{      /* "thẻ li" nội dung ẩn dropđown*/
+                font-size: 16px;
+                margin-bottom: 10px;
+
+            }
+            .content-main .menu-left .tour-link-tn{     /*khung chứa chữ "du lịch trong nước"*/
+                width: 170px;
+                margin-bottom: 5px;
+                border-bottom: 1px solid #ddd;
+            }
+            .content-main .menu-left .tour-link-tn .tour-tn{      /*thẻ a TEXT "du lịch trong nước"*/
+                text-decoration:none; 
+                font-size:17px; 
+                color:#000;
+            }
+            .content-main .menu-left .tour-link-tn .tour-tn:hover{
+                color: rgb(221, 60, 1);         /*hover đổi màu du lịch trong nước*/
+            }       
+            .content-main .menu-left .tieude-loc{       /*tiêu để "lọc theo giá" */
+                font-size: 20px;
+                font-weight: bold;
+                border-bottom: 1px solid #BBBBBB;
+                padding-bottom: 5px;
+                padding-top: 15px;
+            }
+            .content-main .menu-left .slidecontainer{       /*phần chứa lọc theo gi*/
+                padding-top: 10px;
+            }
+            .content-main .menu-left .slidecontainer .nut-loc{       /*thanh lọc*/
+                background-color: #0066FF;
+                font-size: 16px;
+                width: 40px;
+                height: 30px;
+                text-align: center;
+                line-height: 30px;      /*định dạng giữa theo tọa độ Y */
+                border-radius: 5px;
+                margin-top: 10px;
+                float: left;
+                color: #fff;
+                text-decoration: none;
+            }
+            .content-main .menu-left .slidecontainer .nut-loc:hover{    /*hover nút lọc*/
+                background-color: #AAAAAA;
+            }
+            .content-main .menu-left .slidecontainer .gia-loc{          /*giá lọc*/
+                width: 200px;
+                margin-left: 20px;
+                margin-top: 20px;
+                float: left;
+                font-size: 16px;
+               
+            }
+
+            .content-main .menu-left .sp-dexuat{    /*phần all chứa thông tin đề xuất*/
+                margin-top: 100px;
+                
+            }
+            .content-main .menu-left .sp-dexuat h4{     /*chữ "đề xuất"*/
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 10px;
+            }
+            .content-main .menu-left .sp-dexuat .content-dx img{    /*hình đề xuất*/
+                width: 60px;                
+                height: 60px;
+                margin-right: 15px;           
+            }
+            .content-main .menu-left .sp-dexuat .content-dx .hinh-dx{   /*div chứa hình*/
+                float: left;
+            }
+            .content-main .menu-left .sp-dexuat .thanh-phan-dx .content-dx{
+                text-decoration: none;          /*text nội dung "tên tour + giá" trong thẻ a*/
+                font-size: 15px;
+                color: #000;
+            }
+            .content-main .menu-left .sp-dexuat .thanh-phan-dx .content-dx:hover{
+                color:rgb(221, 60, 1);
+            }
+            .content-main .menu-left .sp-dexuat .thanh-phan-dx{
+                margin-top: 10px;
+            }
+
+/*=============================================================================================*/
+            /*phàn main bên phải*/
+            .content-main .content-right{           /*phần nội dung bên phải*/
+                width: 75%;
+                margin-left: 25%;
+
+            }
+            .content-main .content-right .row .thumbnail-sp{    /*khung lưới bootstrap chứa nội dung*/
+                width: 30%;
+                height: 400px;
+            }
+            .content-main .content-right .row-1{    /* khung dòng 1*/
+                height:430px;
+            }
+            .content-main .content-right .row .thumbnail-sp .thumbnail{
+                width: 111%;               /*khung chứa nội dung nằm trong khung lưới*/
+                height: 100%;
+                box-shadow: 5px 5px 8px 5px #999999;
+            }
+            .content-main .content-right .row .thumbnail-sp .thumbnail:hover{
+                background-color: #FFFFCC;
+            }
+            .content-main .content-right .row .thumbnail-sp .t-2{
+                margin-left: 9%;          /*khung chứa nội dung thành phần thứ 2 trong dòng*/
+            }
+            .content-main .content-right .row .thumbnail-sp .t-3{
+                margin-left: 18%;          /*khung chứa nội dung thành phần thứ 3 trong dòng*/
+            }
+            .content-main .content-right .row .thumbnail-sp .thumbnail img{
+                width: 100%;
+                height: 280px;              /*định dạng hình*/
+            }
+            .content-main .content-right .row .thumbnail-sp .t-1 img:hover{
+                content: url('./image/28.jpg');        /*hover đổi hình*/
+                transform: scale(1.04);
+                transition: linear 0.2s;
+            }
+            .content-main .content-right .row .thumbnail-sp .t-2 img:hover{
+                content: url('./image/26.jpg');        /*hover đổi hình*/
+                transform: scale(1.04);
+                transition: linear 0.2s;
+            }
+            .content-main .content-right .row .thumbnail-sp .t-3 img:hover{
+                content: url('./image/25.jpg');        /*hover đổi hình*/
+                transform: scale(1.04);
+                transition: linear 0.2s;
+            }
+
+            /*row 2*/
+            .content-main .content-right .row-2{        /* khung dòng 2*/
+                padding-bottom: 4%;
+            }
+            .content-main .content-right .row .thumbnail-sp .t-5{
+                margin-left: 9%;          /*khung chứa nội dung thành phần thứ 2 trong dòng*/
+            }
+            .content-main .content-right .row .thumbnail-sp .t-6{
+                margin-left: 18%;          /*khung chứa nội dung thành phần thứ 3 trong dòng*/
+            }
+            .content-main .content-right .row .thumbnail-sp .t-4 img:hover{
+                content: url('./image/23.jpg');        /*hover đổi hình*/
+                transform: scale(1.04);
+                transition: linear 0.2s;
+            }
+            .content-main .content-right .row .thumbnail-sp .t-5 img:hover{
+                content: url('./image/29.jpg');        /*hover đổi hình*/
+                transform: scale(1.04);
+                transition: linear 0.2s;
+            }
+            .content-main .content-right .row .thumbnail-sp .t-6 img:hover{
+                content: url('./image/27.jpg');        /*hover đổi hình*/
+                transform: scale(1.04);
+                transition: linear 0.2s;
+            }
+
+/*================================================================================================================*/
+            /*phần phân số trang (Pagination). link chuyển trang*/
+            .sotrang{
+               text-align: center;
+            }
+
+/*================================================================================================================*/
+        /* 8. fooer*/
+
+            /*phần icon liên kết mạng xã hội*/
+            .d-flex{
+                padding-top: 30px;
+                background-color: #363636;
+            }
+            .d-flex .d-lg-block span{   /*tiêu đề liên kết mạng xã hội*/
+                font-size: 18px;
+                color: #fff;
+            }
+            .d-flex .icon-mangxakoi .text-reset .fab{   /*định dạng icon mạng xã hội*/
+                font-size: 30px;
+                margin: 20px;
+                color: #BEBEBE;
+                 
+            }
+            .d-flex .icon-mangxakoi .text-reset .fa-facebook-f:hover{
+                color: #4064ac;     /*hover icon*/
+            }
+            .d-flex .icon-mangxakoi .text-reset .fa-twitter:hover{
+                color: #1c9cea;     /*hover icon*/
+            }
+            .d-flex .icon-mangxakoi .text-reset .fa-google:hover{
+                color: #dd4b39;     /*hover icon*/
+            }
+            .d-flex .icon-mangxakoi .text-reset .fa-instagram:hover{
+                color: #ad30b7;     /*hover icon*/
+            }
+            .d-flex .icon-mangxakoi .text-reset .fa-youtube:hover{
+                color: #ff0000;     /*hover icon*/
+            }
+
+            /*phần thông tin công ty*/
+            .all-thongtin{
+                color:#fff;
+                background-color: #363636;
+               /* padding-top: 0px;*/
+            }
+            .all-thongtin .container .row .thongtin-lienhe{ /*phần khung chứa thông tin liên hệ công tin*/
+                text-align:initial;
+                
+            }
+            .all-thongtin .container .row .thongtin-lienhe h6{
+                font-size: 22px;        /*tên công ty*/
+                padding-bottom: 10px;
+                color:rgb(255, 174, 0);
+            }
+            .all-thongtin .container .row .thongtin-lienhe .link-lienhe a{
+                text-decoration: none;      /*phần link liên hệ của công ty*/
+                margin-left: 10px;
+                color:#fff;
+            }
+            .all-thongtin .container .row .thongtin-lienhe .link-lienhe a:hover{
+                color:rgb(255, 174, 0);        /* hover phần link liên hệ của công ty*/
+            }
+            .all-thongtin .container .row .thongtin-lienhe .form-group{
+                width: 330px;   /*form email*/
+            }
+            .all-thongtin .container .row .thongtin-lienhe .form-group button{
+                margin-top: 10px;       /*nút gửi*/
+            }
+            .all-thongtin .container .row .thongtin-lienhe .form-group button:hover{
+                background-color: rgb(255, 174, 0);
+            }
+
+
+            /*phần 'tin tức' + 'góc khách hàng'*/
+            .all-thongtin .container .row .tieude-tt{   /*phần khung chứa 'tin tức' + 'góc khách hàng' + 'tour phổ biến'*/
+                text-align: initial;
+                margin-left: 160px;
+
+            }
+            .all-thongtin .container .row .tieude-tt h6{   /*chữ tin tức*/
+                font-size: 16px;
+                color:rgb(255, 174, 0);
+            }
+
+            .all-thongtin .container .row .tieude-tt ul li a{  
+                text-decoration: none;      /*định dạng thẻ a chung cho 'tin tức' và 'khách hàng'*/
+                color: #fff;
+            }
+            .all-thongtin .container .row .tieude-tt ul li a:hover{
+                color:rgb(255, 174, 0);
+            }
+
+            /*phần bản quyền*/
+            footer .banquyen{
+                padding-bottom: 20px;
+                background-color: #363636;
+                color: #fff;
+            }
+        </style>
+       
+    </head>
+
+    <body>
+        <!-- 1. menu navbar-->
+        <nav class="navbar navbar-default sticky-top">
+            <div class="menu">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="./admin.html"><img src="./image/logo_light.PNG"></img></a>
+                 <!----   <a class="navbar-brand" href="#">HOANGVIET TOURS</a>-->
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link trangchu" href="./Trangchu.html"><b>TRANG CHỦ</b></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link gioithieu" href="#"><b>GIỚI THIỆU</b></a>
+                            </li>
+                            <li class="nav-item sub-menu">
+                                <a class="nav-link" href="#"><b>TOUR TRONG NƯỚC</b>
+                                    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                </a>
+                                <div class="dropdown-content">
+                                    <a class="dropdown-item" href="#">Du lịch Phú Quốc</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch Đà Lạt</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch Hạ Long</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch Côn Đảo</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch SaPa</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch Ninh Bình</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="./sanpham_trongnuoc.html">Du lịch Đà Nẵng</a>
+                
+                                </div>
+                            </li>
+                            <li class="nav-item sub-menu">
+                                <a class="nav-link" href="./danhmucsanpham.html"><b>TOUR NƯỚC NGOÀI</b>
+                                    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                </a>
+                                <div class="dropdown-content">
+                                    <a class="dropdown-item" href="./sanpham.html">Du lịch Hàn Quốc</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch Nhật Bản</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch Canada</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch Thái Lan</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch Singapore</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch Indonesia</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch DuBai</a>
+                                </div>
+                            </li>   
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><b>TIN TỨC</b></a>
+                            </li>
+                            <li class="nav-item lienhe">
+                                <a class="nav-link" href="#"><b>LIÊN HỆ</b></a>
+                            </li>
+
+                            <li class="nav-item sub-timkiem">
+                               
+                                    <a class="nav-link icon icon1" href="#">
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>                            
+                                    </a>
+
+                                    <div class="o-timkiem"> <!--ẩn-->
+                                        <input type="text" name="o-timkiem" id="o-timkiem" placeholder="  Nhập nội dung..." />
+                                        <a href="#">
+                                                <span class="nut-tk">
+                                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                                </span>
+                                        </a> 
+                                    </div>
+                               
+                            </li>
+                            <li class="nav-item login">
+                                <a class="nav-link icon icon2" href="#">
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                </a>
+
+                                <div class="dk-and-dn">
+                                    <div>
+                                        <a href="./khachhang_dangnhap.html">
+                                            <p><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; Đăng nhập</p>
+                                        </a>
+                                    </div>
+                                    <div>
+                                    <a href="./khachhang_dangky.html">
+                                        <p><i class="fas fa-plus"></i>&nbsp; Tạo tài khoản</p>
+                                    </a>
+                                    </div>
+                                </div>
+                            </li>
+                      </ul>
+                      
+                </div>
+            </div> <!-- /.container-fluid -->
+        </nav>
+
+<!--=========================================================================================================================================================-->
+        <!--2. phần nội dung menu bên trái-->
+        <main id="main">
+            <div class="content-main">
+                <div class="menu-left">
+                    <p class="tieude-danhmuc">Danh mục Tour</p>
+
+                    <div class="dropdown">
+                        <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Du lịch nước ngoài
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dLabel">
+                            <li>
+                                <a href="./sanpham.html">Du lịch Hàn Quốc</a>
+                            </li>
+                            <li>
+                                <a href="#">Du lịch Nhật Bản</a>
+                            </li>
+                            <li>
+                                <a href="#">Du lịch Canada</a>
+                            </li>
+                            <li>
+                                <a href="#">Du lịch Thái Lan</a>
+                            </li>
+                            <li>
+                                <a href="#">Du lịch Singapore</a>
+                            </li>
+                            <li>
+                                <a href="#">Du lịch Indonesia</a>
+                            </li>
+                            <li>
+                                <a href="#">Du lịch Du bai</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="tour-link-tn">
+                        <a href="#" class="tour-tn">
+                                Du lịch trong nước                   
+                        </a>
+                    </div>
+
+                    <div class="dropdown">
+                        <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Khách sạn
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dLabel">
+                            <li>
+                                <a href="#">5 sao</a>
+                            </li>
+                            <li>
+                                <a href="#">4 sao</a>
+                            </li>
+                            <li>
+                                <a href="#">3 sao</a>
+                            </li>
+                            <li>
+                                <a href="#">Bình dân</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!--lọc theo giá-->
+                    <p class="tieude-loc">Lọc theo giá</p>
+                    <div class="slidecontainer">
+                        <input type="range" min="0" max="100" value="70" step="0.1" class="slider" id="myRange">
+                        <a href="#" class="nut-loc" >Lọc</a>
+                        <p class="gia-loc">Giá : <span id="demo"></span> Triệu</p>
+                    </div>
+                    <script>
+                        var slider = document.getElementById("myRange");
+                        var output = document.getElementById("demo");
+                        /* Hiển thị giá trị mặc định 50 cho thẻ span với id là demo*/
+                        output.innerHTML = slider.value; 
+
+                        /* cập nhật giá trị hiện tại của ranger slider*/
+                        slider.oninput = function() {
+                        output.innerHTML = this.value;
+                        }
+                    </script>   <!--phần hiển thị giá lọc-->
+
+
+                    <div class="sp-dexuat">
+                        <h4><b>Đề xuất tour trong nước</b></h4>
+                        <div class="thanh-phan-dx">
+                            <a href="#" class="content-dx">
+                                <div class="hinh-dx"><img src="./image/13.jpg"></div>
+                                <div class="ten-dx">
+                                    <span class="s-1">Tour Đà Lạt 7 ngày <br>4,500,000 <u>đ</u> </span>  
+                                </div>            
+                            </a>
+                        </div>
+                        <br>
+                        <div class="thanh-phan-dx">
+                            <a href="./sanpham_trongnuoc.html" class="content-dx">
+                                <div class="hinh-dx"><img src="./image/14.jpg"></div>
+                                <div class="ten-dx">
+                                    <span class="s-1">Tour Đà Nẵng 4 ngày<br> 8,000,000 <u>đ</u> </span>
+                                </div>            
+                            </a>
+                        </div>
+                        <br>
+                        <div class="thanh-phan-dx">
+                            <a href="#" class="content-dx">
+                                <div class="hinh-dx"><img src="./image/16.png"></div>
+                                <div class="ten-dx">
+                                    <span class="s-1">Tour Ninh Bình 7 ngày <br>10,000,000 <u>đ</u></span>
+                                </div>            
+                            </a>
+                        </div>
+                        <br>
+                        <div class="thanh-phan-dx">
+                            <a href="#" class="content-dx">
+                                <div class="hinh-dx"><img src="./image/17.jpg"></div>
+                                <div class="ten-dx">
+                                    <span class="s-1">Tour phú quốc 7 ngày <br>12,500,000 <u>đ</u> </span>
+                                </div>            
+                            </a>
+                        </div>
+                        
+                    </div>
+                </div>  <!--menu-left-->
+
+<!--==========================================================================================================================-->                
+         <!--phần main bên phải-->       
+                <div class="content-right">
+                    <div class="row row-1">
+                        <div class="col-sm-6 col-md-4 thumbnail-sp">
+                            <div class="thumbnail t-1">
+                                <a href="#"><img src="./image/8.png" alt="..."></a>
+                                <div class="caption">
+                                    <h3><i><b>DU LỊCH DU BAI</b></i></h3>
+                                    <p style="color: red;font-size: 16px;"><b>65,000,000 <u>đ</u></b></p>                          
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 thumbnail-sp">
+                            <div class="thumbnail t-2">
+                                <a href="#"><img src="./image/5.png" alt="..."></a>
+                                <div class="caption">
+                                    <h3><i><b>DU LỊCH CANADA</b></i></h3>
+                                    <p style="color: red;font-size: 16px;"><b>50,000,000 <u>đ</u></b></p>                          
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 thumbnail-sp">
+                            <div class="thumbnail t-3">
+                                <a href="#"><img src="./image/9.png" alt="..."></a>
+                                <div class="caption">
+                                    <h3><i><b>DU LỊCH THÁI LAN</b></i></h3>
+                                    <p style="color: red;font-size: 16px;"><b>15,000,000 <u>đ</u></b></p>                          
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!--row 1-->
+
+                    <!--row 2-->
+                    <div class="row row-2">
+                        <div class="col-sm-6 col-md-4 thumbnail-sp">
+                            <div class="thumbnail t-4">
+                                <a href="./sanpham.html"><img src="./image/6.png" alt="..."></a>
+                                <div class="caption">
+                                    <h3><i><b>DU LỊCH HÀN QUỐC</b></i></h3>
+                                    <p style="color: red;font-size: 16px;"><b>20,000,000 <u>đ</u></b></p>                          
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 thumbnail-sp">
+                            <div class="thumbnail t-5">
+                                <a href="#"><img src="./image/10.jpg" alt="..."></a>
+                                <div class="caption">
+                                    <h3><i><b>DU LỊCH INDONESIA</b></i></h3>
+                                    <p style="color: red;font-size: 16px;"><b>30,000,000 <u>đ</u></b></p>                          
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 thumbnail-sp">
+                            <div class="thumbnail t-6">
+                                <a href="#"><img src="./image/7.png" alt="..."></a>
+                                <div class="caption">
+                                    <h3><i><b>DU LỊCH NHẬT BẢN</b></i></h3>
+                                    <p style="color: red;font-size: 16px;"><b>25,000,000 <u>đ</u></b></p>                          
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!--row 2-->
+
+                </div>
+
+            </div>
+        </main>
+ 
+<!--======================================================================================================================================================-->
+        <!--phần phân số trang (Pagination). link chuyển trang-->
+        <div class="sotrang">
+                <ul class="pagination ds-trang">
+                    <li><a href="#" aria-label="Previous"><span aria-hidden="true">&larr;</span></a></li>
+                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">2 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">3 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#" aria-label="Next"><span aria-hidden="true">&rarr;</span></a></li>
+                </ul>           
+        </div>
+<!--======================================================================================================================================================-->
+         <!-- 3. phần footer -->
+        <!-- Footer -->
+        <footer class="text-center text-lg-start bg-light text-muted">
+            <!-- Section: Social media -->
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+                <!-- Left -->
+                <div class="me-5 d-none d-lg-block">
+                    <span>Kết nối với chúng tôi trên các mạng xã hội</span>
+                </div>
+                <!-- Left -->
+            
+                <!-- Right -->
+                <div class="icon-mangxakoi">
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-facebook-f"></i>
+                      </a>
+                      <a href="" class="me-4 text-reset">
+                        <i class="fab fa-twitter"></i>
+                      </a>
+                      <a href="" class="me-4 text-reset">
+                        <i class="fab fa-google"></i>
+                      </a>
+                      <a href="" class="me-4 text-reset">
+                        <i class="fab fa-instagram"></i>
+                      </a>
+                      <a href="" class="me-4 text-reset">
+                        <i class="fab fa-youtube"></i>
+                      </a>
+                      
+                </div>
+                <!-- Right -->
+            </section>
+            <!-- Section: Social media -->
+        
+            <!-- Section: Links  -->
+            <section class="all-thongtin">
+                <div class="container text-center text-md-start mt-5">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                    <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 thongtin-lienhe">
+                            <!-- Content -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                <b><i>HOANGVIET TOURS</i></b>
+                            </h6>
+                            <div class="link-lienhe">
+                                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                                <a href="">123 Lý Thường Kiệt, Q.11, TP.HCM </a><br><br>
+                                <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                                <a href="">0123 456 789 </a><br><br>
+                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                <a href="">hoangviettous@gmail.com </a><br><br>
+                                <p>Đăng ký để được nhận thông tin khuyến mãi một cách nhanh chóng :</p>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email của ban...">
+                                <button type="submit" class="btn btn-default">Gửi</button>
+                            </div>
+                            
+                        </div>
+                        <!-- Grid column -->
+                
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 tieude-tt tintuc">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Tin tức
+                            </h6>
+                            <ul>
+                                <li><a href="#!" class="text-reset">Bản tin du lịch</a></li><br>
+                                <li><a href="#!" class="text-reset">Cẩm nang du lịch</a></li><br>
+                                <li><a href="#!" class="text-reset">Khám phá du lịch</a></li><br>
+                                <li><a href="#!" class="text-reset">Sự kiện du lịch</a></li><br>
+                                <li><a href="#!" class="text-reset">Tuyển dụng</a></li>  
+                            </ul>
+                        </div>
+                        <!-- Grid column -->
+                
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 tieude-tt">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Góc khách hàng
+                            </h6>
+                            <ul>
+                                <li><a href="#!" class="text-reset">Điều kiện & điều khoản</a></li><br>
+                                <li><a href="#!" class="text-reset">Quyền riêng tư</a></li><br>
+                                <li><a href="#!" class="text-reset">Chính sách bảo mật và thông tin</a></li><br>
+                                <li><a href="#!" class="text-reset">Ý kiến khách hàng</a></li><br>
+                                <li><a href="#!" class="text-reset">Phương thức thanh toán</a></li>  
+                            </ul>
+                        </div>
+                        <!-- Grid column -->
+  
+                </div>
+            </section> <!-- Section: Links  -->
+
+            <!-- Copyright -->
+            <div class="text-center p-4 banquyen">
+                © 2021 Copyright : HOANGVIETTOURS.com
+            </div> <!-- Copyright -->
+            
+        </footer> <!-- Footer -->
+
+    </body>
+</html>

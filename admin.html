@@ -1,0 +1,525 @@
+<!doctype html />
+<html>
+	<head>
+		<meta charset=UTF-8>
+		<meta name= "description" content = "Lập trình web font-end ">
+		<meta name= "keywords" content= "HTML, CSS, XML, JavaScript">
+		<meta name = "author" content = "Phạm Hoàng Việt">
+		<link rel="icon" type="image/png" href="./image/v.png">
+       
+        <!--bootstrap 3-->
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="./bootstrap-3.4.1-dist/css/bootstrap.css">
+        <script src="./bootstrap-3.4.1-dist/js/jquery.min.js"></script>
+        <script src="./bootstrap-3.4.1-dist/js/bootstrap.js"></script>
+        <script src="./bootstrap-3.4.1-dist/js/less-1.7.0.min.js"></script>
+
+        <!--bootstrap 5-->
+        <link rel="stylesheet" href="./bootstrap-5.1.0-dist/css/bootstrap.css">
+        <script src="./bootstrap-5.1.0-dist/js/bootstrap.js"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
+
+		<title>Phạm Hoàng Việt </title>
+
+<!----================================================================================================================-->
+        <!--CSS-->
+        <style>
+           @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');    
+            /*@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');*/
+            html,body{
+              /*  font-family: 'Roboto', sans-serif;*/
+              /*font-family: 'Cabin', sans-serif;*/
+                font-family: 'Lato', sans-serif;
+                overflow-x: hidden;
+                background-color: #F5F5F5;
+            }
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+/*================================================================================================================*/
+            /* 1. phần header*/
+
+            .header{        /*thẻ header chứa all nội dung trên đầu*/
+                background-color: #EE6363;
+                width:100%;
+                height: 80px;
+                border-radius: 0px;
+                position: relative;
+                z-index: 1;         /*để headder năm trên menu tùy chọn bên trái*/
+                position: fixed;
+
+                display: flex;          /*định dạng lại flex của bootstrap*/
+                justify-content:space-between;     /*canh nội dung bát đầu bên trái*/
+            }
+            .header a{      /*tên công ty*/
+                margin-left: 20px;
+                font-size: 20px;    
+                margin-top: 20px;
+                text-decoration: none;
+                color: #fff;
+            }
+            .header input{     /*ô tìm kiếm*/
+                width: 33%;
+                margin-left: -22.5%;
+                margin-top: 20px;
+            }
+            .header .form-control{  /*chữ nhập nội dung*/
+                font-size: 15px;
+            }
+
+            .header .nut-tk{    /*nút tìm kiếm*/
+                width: 65px;
+                height: 34px;
+                margin-top: 20px;
+                margin-left: -32%;
+                background-color: #3399FF;
+                color: #fff;
+                border: none;
+                box-shadow: 0px 0px 4px #666666;
+                font-size: 12px;
+            }
+            .header .nut-tk:hover{          /*hover nút tìm kiếm*/
+                background-color: #2e8ae6;
+            }
+            .header .dropdown .admin{       /*phần chứa avatar + tên admin*/
+                width: 100%;
+                margin-left: -20%;
+                margin-top: 20px;
+            }
+
+            .header .dropdown img{ /*avatar user*/
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;           
+            }
+
+            .header .dropdown{     /*phần chứa dropdown-menu */
+                position: relative;
+            }
+
+            .header .dropdown .dropdown-menu{
+              position: absolute;             /*phần dropdown-menu ẩn*/
+              margin-left: -40%;
+              margin-top: -18px;
+              width: 150px;
+              height: 170px;
+              border-radius: 5px;
+              z-index: 1;   /*định dạng cho dropdown nằm trên tất cả để xổ xuống*/
+              
+            }
+            .header .dropdown .dropdown-menu li .dropdown-item{
+                margin-left: 1px;   /*phần chứa icon và chữ dropdơn-menu */
+            } 
+            .header .dropdown .dropdown-menu .li-1{
+                margin-top: -7px;
+            }                                   
+
+            .header .dropdown .dropdown-menu li a{
+                font-size: 14px;        /*chữ trong dropdown*/
+                
+            }
+            .header .dropdown #dLabel{       /*nút chứa tên admin*/
+                background-color:unset;   /*bỏ màu nền mặc định của bootstrap*/
+                color: #fff;
+                font-size: 16px;
+                border: none;   /*bỏ border có sẵn của bootstrap*/     
+            }
+
+/*================================================================================================================*/
+        /* 2. phần menu tùy chọn*/
+        #sidebarMenu {          /* nền menu trái*/
+            position: fixed;
+            height: 100vh;
+            background-color: #fff;
+            box-shadow: 3px 3px 5px #CCCCCC;
+            overflow-y: scroll;
+        }
+        .dm-quanly{
+            font-size: 18px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        #sidebarMenu .position-sticky{  /*phần chứa nội dung menu-left*/
+            margin-top: 80px;
+        }
+        #sidebarMenu .position-sticky ul li{    /*các thành phần quản lý*/
+            padding-bottom: 10px;
+        }
+
+        #sidebarMenu .position-sticky .nav .nav-item a svg{
+            margin-top: -8px;   /*icon thành phần menu*/
+            color: #000;
+        }
+
+        #sidebarMenu .position-sticky .nav .nav-item a span{
+            font-size: 15px;   /*thành phần chữ*/
+            color: #000;
+        } 
+        .sidebar-heading span{      /*báo cáo đã lưu*/
+            font-size: 18px;
+            padding-bottom: 10px;
+            margin-left: 7px;
+        }
+
+/*================================================================================================================*/
+        /* 3. phần nội dung chính*/
+
+            /* cụm 1*/
+            .my-row{
+                width: 110%;
+            }
+            .my-row .khung-tk{  /*khung chứa tất cả cá khối thống kê*/
+                width: 110%;
+            }
+            .my-row .thanhpan-tk{      /*phần chứa từng nội dung khối thống kê*/
+                width: 110%;
+                height: 21.1%;
+                box-shadow: 0px 0px 7px #666666;
+                background-color: #fff;
+                font-size: 16px;
+                
+            }
+            .my-row .thanhpan-tk .p-1{     /*text dòng 1*/
+                font-weight: bold;
+                font-size: 18px;
+                margin-top: 20px; 
+                margin-left: 20px; 
+            }
+            .my-row .thanhpan-tk .p-2{     /* text dòng 2*/
+                float: left;
+                margin-left: 20px;
+  
+            }
+            .my-row .thanhpan-tk .khung-icon{      /* all khung chứa icon*/
+                width: 50px;
+                height: 50px;
+                margin-left: 180px;
+                margin-top: -26px;
+                text-align: center;
+            }
+            .my-row .thanhpan-tk .ic-1{      /*khung chứa icon doanh thu*/
+                background-color: #1abc9c;
+            }
+            .my-row .thanhpan-tk .ic-2{      /*khung chứa icon số lượng đặt*/
+                background-color: #30a5ff;
+            }
+            .my-row .thanhpan-tk .ic-3{      /*khung chứa icon kpi*/
+                background-color: #f36a5a;
+            }
+            .my-row .thanhpan-tk .ic-4{      /*khung chứa icon khách hàng mới*/
+                background-color: #fabe28;
+            }
+            .my-row .thanhpan-tk .icon{      /*icon */
+                margin-top: 15px;  
+                font-size: 25px;
+                color: #F5F5F5;
+            }
+            .my-row .khung-tk{      /*khung chứa cột 1 (lưới b.trap) doanh thu,...,...*/
+                width: 250px;
+            }
+            /*===============================================*/
+            /* cụm 2. sơ dô*/
+            .khung-sodo{
+                width: 67%;
+                height: 490px;
+                background-color: #fff;
+                margin-top: 20px;
+                margin-left: 3%;
+                padding: 30px;
+                box-shadow: 0px 0px 7px #666666;
+            }          
+
+            /*===============================================*/
+            /* cụm 3 table*/
+            .dashboard{         /*chữa dashboard phía trên*/
+                margin-top: 82px;
+            }
+
+            /*===============================================*/
+            .khung-table{               /*khung chứa bảng*/
+                width: 96.5%;
+                background-color: #fff;
+                margin-top: 20px;
+                margin-left: 0%;
+                padding: 30px;
+                box-shadow: 0px 0px 7px #666666;
+            }
+            .khung-table .d-flex{           /*tiêu đề của bảng*/
+                background-color: #fff;
+            }
+
+            .table {                        /*bảng*/
+                background-color: #fff;
+                width: 96.5%;
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+<!--===============================================================================================================================================================================================================================================================================================================-->        
+        <!-- 1. phần header-->
+        <header class="header">
+            <a class="thuong-hieu" href="#">HOANGVIET TOURS</a>
+            <input class="form-control me-2" type="search" placeholder="Nhập nội dung ..." aria-label="Search">
+            <button class="btn btn-outline-success nut-tk" type="submit">Tìm kiếm</button> 
+
+            <div class="dropdown"> 
+                <div class="admin">                         
+                    <img src="image/19.jpg">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Hoàng Việt
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dLabel">
+                        <li class="li-1">
+                            <a class="dropdown-item" href="./admin_khongtimthay.html">                                    
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                </svg>&nbsp;&nbsp;&nbsp;&nbsp; Cá nhân
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="./admin_khongtimthay.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+                                    <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+                                </svg>&nbsp;&nbsp;&nbsp;&nbsp; Cài đặt
+                            </a>
+                        </li>   
+
+                        <li><hr class="dropdown-divider" style="margin-top: 20px;"></li>
+
+                        <li>
+                            <a class="dropdown-item" href="./admindangnhap.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                                    <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                                </svg>&nbsp;&nbsp;&nbsp;&nbsp; Đăng xuất
+                            </a>
+                        </li>
+                    </ul>  
+                </div>                         
+            </div>
+        </header>
+
+<!--===============================================================================================================================================================================================================================================================================================================-->         
+       <!-- phần nội dung-->
+
+        <!-- 2. phần menu tùy chọn-->
+        <div class="container-fluid">
+            <div class="row">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block  sidebar collapse">
+                    <div class="company-name">
+                        
+                    </div>
+                    <div class="position-sticky pt-3"> 
+                        <p class="dm-quanly">Danh mục Quản Lý</p> 
+                        <hr>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./admin_khongtimthay.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span>Khách hàng</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./admin_them_sp.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span>Sản phẩm</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./admin_khongtimthay.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+                                        <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+                                    </svg>&nbsp;&nbsp;&nbsp;&nbsp;<span>Liên hệ</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./admin_khongtimthay.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-newspaper" viewBox="0 0 16 16">
+                                        <path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"/>
+                                        <path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"/>
+                                    </svg>&nbsp;&nbsp;&nbsp;&nbsp;<span>Tin tức</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./admin_khongtimthay.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
+                                    </svg>&nbsp;&nbsp;&nbsp;&nbsp;<span>Slide</span>
+                                </a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="./admin_khongtimthay.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span>Báo cáo</span>
+                                </a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="./Trangchu.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-journal" viewBox="0 0 16 16">
+                                        <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                                        <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                                      </svg>&nbsp;&nbsp;&nbsp;&nbsp; <span>Trang chủ</span>
+                                </a>
+                            </li>
+                        </ul>
+                
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>Báo cáo (đã lưu)</span>
+                            <a class="link-secondary" href="./admin_khongtimthay.html" aria-label="Add a new report">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                    <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+                                  </svg>
+                            </a>
+                        </h6>
+                        <ul class="nav flex-column mb-2">
+                            <li class="nav-item">
+                                <a class="nav-link" href="./admin_khongtimthay.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span>Theo tháng</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./admin_khongtimthay.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span>Theo quý</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./admin_khongtimthay.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span>Giảm giá cuối năm</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+    <!--===============================================================================================================================================================================================================================================================================================================-->
+            <!-- 3. phần nội dung chính-->
+
+                <!-- cụm 1-->
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>    
+                    <div class="dashboard d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1 class="h2"><b>Dashboard</b></h1>
+                    </div>  
+                        <!-- cụm 1 . cột 1-->
+                    <div class="row my-row">
+                        <div class="col-sm-12 col-xl-6 khung-tk">
+                            <div class="thanhpan-tk">
+                                <p class="p-1">Doanh thu / tháng</p>
+                                <p class="p-2">650,000,000 đ</p>
+                                <div class="khung-icon ic-1"><i class="far fa-money-bill-alt icon"></i></div>
+                            </div>
+                            <div class="thanhpan-tk">
+                                <p class="p-1">Số lượng / tháng</p>
+                                <p class="p-2">30 tour</p>
+                                <div class="khung-icon ic-2"><i class="fas fa-sticky-note icon"></i></div>
+                            </div>
+                            <div class="thanhpan-tk">
+                                <p class="p-1">KPI</p>
+                                <p class="p-2">95%</p>
+                                <div class="khung-icon ic-3"><i class="fad fa-bullseye-pointer icon"></i></div>
+                            </div>
+                            <div class="thanhpan-tk">
+                                <p class="p-1">Khách hàng / ngày</p>
+                                <p class="p-2">50</p>
+                                <div class="khung-icon ic-4"><i class="fas fa-user-tie icon"></i></div>
+                            </div>
+                        </div>
+                     
+                    
+                    <!-- cụm 2    cột 2-->
+                        <div class="col-sm-12 col-xl-6 khung-sodo">
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h1 class="h2">Lượt truy cập (theo ngày)</h1>
+                            </div>                   
+                            <canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="1522" height="642" style="display: block; height: 514px; width: 1218px;"></canvas> 
+                        </div>
+                    </div> <!--row-->
+
+                    <!-- cụm 3: table khách hàng mua nhiều trong tháng-->
+                    <div class="khung-table">   <!--TABLE Variants BOOTSTRAP 5-->
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h1 class="h2">Thống kê khách hàng mua nhiều tour (theo năm)</h1>
+                        </div> 
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                <th scope="col">STT</th>
+                                <th scope="col">HỌ TÊN</th>
+                                <th scope="col">USER NAME</th>
+                                <th scope="col">EMAIL</th>
+                                <th scope="col">Số lượng</th>
+                                </tr>
+                            </thead>
+                            <tr class="table-primary dong">
+                                <td class="table-primary">1</td>
+                                <td class="table-primary">Phạm Hoàng Việt</td>
+                                <td class="table-primary">Viet_123</td>
+                                <td class="table-primary">viet123@gmail.com</td>
+                                <td class="table-primary">36</td>
+                            </tr>
+                            <tr class="table-secondary dong">
+                                <td class="table-secondary">2</td>
+                                <td class="table-secondary">Nguyễn Văn A</td>
+                                <td class="table-secondary">A_124</td>
+                                <td class="table-secondary">A124@gmail.com</td>
+                                <td class="table-secondary">33</td>
+                            </tr>
+                            <tr class="table-success dong">
+                                <td class="table-success">3</td>
+                                <td class="table-success">Trần Thị B</td>
+                                <td class="table-success">B_125</td>
+                                <td class="table-success">B125@gmail.com</td>
+                                <td class="table-success">30</td>
+                            </tr>
+                            <tr class="table-danger dong">
+                                <td class="table-danger">4</td>
+                                <td class="table-danger">Lâm Anh C</td>
+                                <td class="table-danger">C_126</td>
+                                <td class="table-danger">C126@gmail.com</td>
+                                <td class="table-danger">28</td>
+                            </tr>
+                            <tr class="table-warning dong">
+                                <td class="table-warning">5</td>
+                                <td class="table-warning">Trương Văn D</td>
+                                <td class="table-warning">D_127</td>
+                                <td class="table-warning">D127@gmail.com</td>
+                                <td class="table-warning">26</td>
+                            </tr>
+                            <tr class="table-info dong">
+                                <td class="table-info">6</td>
+                                <td class="table-info">Nguyễn Thị F</td>
+                                <td class="table-info">F_128</td>
+                                <td class="table-info">F128@gmail.com</td>
+                                <td class="table-info">25</td>
+                            </tr>
+    
+                        </table>
+                    </div>
+                </main>
+                
+            </div> <!--row-->
+        </div> <!--container-fluid-->
+ 
+
+        
+        
+        <script src="./bootstrap-5.1.0-dist/js/dashboard.js"></script>
+
+        <script src="./coreui-free-bootstrap-admin-template-main/"></script>
+    </body>
+</html>

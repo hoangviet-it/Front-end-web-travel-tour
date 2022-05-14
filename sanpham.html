@@ -1,0 +1,1553 @@
+<!doctype html />
+<html>
+	<head>
+		<meta charset=UTF-8>
+		<meta name= "description" content = "Lập trình web font-end ">
+		<meta name= "keywords" content= "HTML, CSS, XML, JavaScript">
+		<meta name = "author" content = "Phạm Hoàng Việt">
+
+		<link rel="icon" type="image/png" href="./image/v.png">
+       <!--- <link rel="stylesheet" type="text/css" href="./css/dinhdang.css">-->
+
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="./bootstrap-3.4.1-dist/css/bootstrap.css">
+        <script src="./bootstrap-3.4.1-dist/js/jquery.min.js"></script>
+        <script src="./bootstrap-3.4.1-dist/js/bootstrap.js"></script>
+        <script src="./bootstrap-3.4.1-dist/js/less-1.7.0.min.js"></script>
+       
+		<title>Phạm Hoàng Việt </title>
+
+<!----================================================================================================================-->
+        <!--CSS-->
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+            html,body{
+                font-family: 'Lato', sans-serif;
+                overflow-x: hidden;
+            }
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+
+/*================================================================================================================*/
+     /* 1. định dạng phần navbar*/
+     .navbar .menu .navbar-header img{    /*hình logo*/
+                width: 220px;
+                margin-top: 6%;
+                margin-left: 6%;
+            }
+            .navbar .menu{
+                height: 78px;
+            }
+            .navbar{
+                background-color: #fff !important;
+                width: 100%;
+                position: fixed;
+                border-bottom: 1px solid #DDDDDD;
+                z-index: 10;
+                border-radius: 0px;
+            }
+            .navbar-collapse .navbar-nav .nav-item .nav-link{  /*khoảng cách trái giữa các item navbar + màu chữ*/
+                margin-right: 10px;
+                color: #000;
+            }
+            
+         /*   .navbar-brand{           /*định dạng logo thương hiệu*
+                margin-top: 10px;              
+            }*/
+
+        
+            .navbar-collapse .navbar-nav .nav-item .icon{       /*kích thước 2 icon navbar*/
+                font-size: 20px;
+            }
+            .navbar-collapse .navbar-nav{    /*thành phần menu cách trái*/
+                position: relative;
+                margin-left: 8%;
+                margin-top: 1%;
+            }
+            .navbar-collapse .navbar-nav .nav-item .nav-link .glyphicon-chevron-down{        /* tour icon xổ xuống*/
+                font-size: 13px;
+            }
+
+            .sub-timkiem{               /*thẻ li tìm kiếm*/
+                position: relative;   
+                margin-left: 20px;            
+            }
+            .o-timkiem{     /*phần tìm kiếm bị ẩn*/
+                display: none;  /*ẩn ô tìm kiếm*/
+                position: absolute;
+                z-index: 1;
+
+                width: 300px;
+                height: 100px;
+                background-color: #fff;
+                margin-left: -170px;
+                border-radius: 10px;
+                box-shadow: 3px 3px 10px 2px #333333;
+            }
+            .o-timkiem input{       /*ô nhập nội dung tìm kiếm*/
+                width: 190px;
+                height: 40px;
+                margin: 30px 0px 0px 20px;
+                border: 2px solid #BEBEBE;
+                border-radius: 5px;
+               
+            }
+            .o-timkiem a .nut-tk{         /*nút bấm tìm kiếm*/
+                width: 40px;
+                height: 39px;
+                background-color: #ffee00;
+                padding-top: 12px;
+                border-radius: 5px;
+                box-shadow: 3px 3px 5px #b8b6b6;
+                display: inline-block;      /*để định dạng chiều rộng*/
+            }
+            .o-timkiem a .nut-tk:hover{
+                background-color: #e7d802;
+            }
+            .o-timkiem a .nut-tk .glyphicon-search{     /*icon tìm kiếm của phần ẩn*/
+                margin-left: 13px;
+                color: #000;
+            }
+
+            .sub-timkiem:hover .o-timkiem{      /*hover hiện ô tìm kiếm*/
+                display: block;
+    
+            }
+
+            .navbar-nav .nav-link::after{       /*tạo phần tử ảo after trên a */
+                content: "";
+                height: 5px;
+                width: 0px;
+                background: red;
+                position: absolute;
+                bottom: 8px;
+                left: 0px;
+                transition: 0.5s ease-in-out;
+            }
+            .navbar-nav .nav-link:hover::after{     /*hover vào phần tử ảo tác động đến a */
+                width: 43%;
+                transform:translateX(100%) ;
+            }
+
+            .sub-menu{                  /* đặt li TOUR TRONG NƯỚC làm móc cha */
+                position: relative;
+             /*   display: inline-block;*/
+            }
+            .dropdown-content{          /* ẩn nội dung dropdown */
+                display: none;  
+                position: absolute;
+                z-index: 1;      /*để nội dung hiện nằm trên slide*/
+            }
+            .sub-menu:hover .dropdown-content{      /*hover hiện sub menu*/
+                display: block;
+            }
+
+            .navbar-collapse .navbar-nav .nav-item .dropdown-content{   /*định dạng kích thước sub menu*/
+                background-color: #000;
+                width: 250px;
+                height: 430px;
+                padding: 20px;
+                border-radius: 10px;
+                border: 1.5px solid #DDDDDD;
+            }
+            .navbar-collapse .navbar-nav .nav-item .dropdown-content .dropdown-item{    /*định dạng text trong sub menu*/
+                color: #fff;
+                font-size: 15px;
+                font-weight: bold;
+                text-decoration: none;
+                margin: 0px;
+               
+            }
+            .navbar-collapse .navbar-nav .nav-item .dropdown-content .dropdown-item:hover{
+                color:tomato;
+            }
+
+            /*icon user khách hàng*/
+            .login{                     /*phần chứa icon và phần ẩn(đăng nhập + đăng ký)*/
+                position: relative; 
+            }
+            .login .dk-and-dn{          /*phần ẩn 'đăng nhập + đăng ký' ẩn*/
+                display: none;
+                width: 150px;
+                height: 100px;
+                position: absolute;
+                z-index: 1;
+                background-color: #fff;
+                margin-left: -80px;
+                padding-top: 20px;
+                border-radius: 10px;
+                border: 1px solid #363636;
+            }
+            .login .dk-and-dn p{    /*chữ đăng ký + đăng nhập*/
+                color: #000;
+                font-size: 16px;
+                margin-left: 15px;
+            }
+            .login .dk-and-dn a{    /*thẻ a chứa chứa 2 chữ đăng ký + đăng nhập*/
+                text-decoration: none; 
+                background-color: #1c9cea;
+            }
+            .login .dk-and-dn div:hover{  /*div chứa a*/
+                background-color: #DDDDDD;
+            }
+            .login:hover .dk-and-dn{    /*hover hiện option đăng nhập*/
+                display: block;
+            }
+
+/*================================================================================================================*/
+        /* 2. phần thông tin chi tiết sản phẩm*/           
+            /*phần hình sản phẩm bên trái*/
+
+            .khung{     /* div toàn phần*/
+                margin-top: 10%;   
+               
+            }
+            .khung .image-sanpham{      /*phần chứa slide*/
+                width: 44%;
+                margin-left: 8.8%;
+                
+            }
+            .khung .image-sanpham .slide{       /*nội dung slide*/
+                height: 470px;
+                box-shadow: 0px 0px 10px 7px #BBBBBB;
+            }
+
+            .khung .image-sanpham .slide .glyphicon{    /*icon diều khiểu slide*/
+                font-size: 25px;       
+            }
+
+            .khung .image-sanpham .slide .carousel-inner .item img{
+                height: 470px;      /*hình slide*/
+                width: 100%;
+            }
+
+            /*phần thông tin sản phẩm 'đặt ngay'*/
+            .khung .thongtin-sanpham{    /*phần chứa nội dung thông tin*/   
+                margin-left: 0px;
+                width: 40%;
+            }
+            .khung .thongtin-sanpham .gia{  /*giá*/
+                font-size: 22px;
+                font-family: 'Inconsolata', monospace;
+            }
+            .khung .thongtin-sanpham h2{    /*tên sản phẩm*/
+                font-family: 'Noto Sans TC', sans-serif;
+            }
+            .khung .thongtin-sanpham  .gioithieu{
+                font-size: 15px;
+                text-align: justify;
+            }
+            .khung .thongtin-sanpham .nut-dat .nut{       /*phần chứa thẻ a "đặt ngay"*/
+                background-color: orangered;
+                border: 1px solid orangered;
+                width: 130px;
+                height: 40px;
+                font-size: 20px;
+                text-align: center;
+                margin-top: 20px;
+                padding-top: 5px;
+                border-radius: 8px;
+               
+            }
+            .khung .thongtin-sanpham .nut-dat .nut:hover{        /*hover nút đặt ngay*/
+                background-color: rgb(197, 54, 2);
+                box-shadow: 3px 3px 8px 3px #AAAAAA;
+            }
+            .khung .thongtin-sanpham .nut-dat .nut{     /*chữ "đặt ngay"*/
+                color: #fff;
+                text-decoration: none; 
+            } 
+            .khung .thongtin-sanpham .danhmuc{      /*thẻ a danh mục*/
+                text-decoration: none;
+                color: black;
+            }
+            .khung .thongtin-sanpham .danhmuc:hover{    /*hover chữ trong danh mục*/
+                color: rgb(255, 174, 0);
+            }
+            .khung .thongtin-sanpham .icon-share{       /*phần chức icon*/
+                margin-top: 10px;
+            }
+            .khung .thongtin-sanpham .icon-share a{     /*icon */
+                font-size: 25px;
+                margin: 20px;
+                color: #999999;
+                text-decoration: none;
+            }
+
+            .khung .thongtin-sanpham .icon-share a .fa-facebook-f:hover{
+                color: #4064ac;     /*hover icon*/
+            }
+            .khung .thongtin-sanpham .icon-share a .fa-twitter:hover{
+                color: #1c9cea;     /*hover icon*/
+            }
+            .khung .thongtin-sanpham .icon-share a .fa-google:hover{
+                color: #dd4b39;     /*hover icon*/
+            }
+            .khung .thongtin-sanpham .icon-share a .fa-instagram:hover{
+                color: #ad30b7;     /*hover icon*/
+            }
+            .khung .thongtin-sanpham .icon-share a .fa-youtube:hover{
+                color: #ff0000;     /*hover icon*/
+            }
+
+            .khung .thongtin-sanpham .nut-dat .fade .modal-dialog .modal-content .modal-footer .dat{
+                background-color: #37b721;      /*nút rong form 'đặt ngay'*/
+            }
+            .khung .thongtin-sanpham .nut-dat .fade .modal-dialog .modal-content .tong-tien{
+                margin-left: 20px;
+            }
+
+/*====================================================================================================================================*/
+        /* 3. PHẦN TABS*/
+            /*phần mô tả*/
+            .nav-tabs{      /*các nút tab menu*/
+                margin-left: 10.55%;
+                margin-top: 50px;  
+                border: none; 
+            }
+            .nav-tabs li a{     /*chữ trong nút tab*/
+                color:#000;
+                font-weight: bold;
+            }
+            .nav-tabs li a:active{      /* bấm vào đổi màu chữ*/
+                color:#ff0000;
+            }
+            .tab-content {      /*khung chứa all nội dung các nút*/
+                margin-left: 10.55%;
+                margin-top: 0px;
+                width: 80%;
+                border: 1px solid #dddddd;
+                list-style-position: inside; /*dấu chấm nằm trong khung*/
+                padding: 30px;
+                text-align: justify;
+            }
+            .tab-content #mota ul li{       /*thành phần nội dung thẻ li*/
+                margin-top: 15px;
+                font-size: 15px;
+            }
+
+
+             /*phần thông tin bổ sung*/
+            .tab-content #bosung .noidung-bs p{     /*định dạng chữ trong thông tin bổ sung*/
+                padding-bottom: 30px;
+                font-size: 15px;
+            }
+
+            /*phần lịch trình*/
+            .tab-content #lichtrinh .icon-lichtrinh{        /*khung chứa icon lịch trình*/
+                float:left;
+                width: 50px;
+                height: 50px;
+                color: #333333;
+                border: 2px solid #e1e1e1;
+                background-color: #e1e1e1;
+                border-radius: 50%;
+                font-size: 30px;
+                text-align: center;           
+            }
+            .tab-content #lichtrinh .icon-lichtrinh i{      /*icon*/
+                margin-top: 8px;
+            }
+            .tab-content #lichtrinh p{  /*kích thước chung cho thẻ p thời gian*/
+                font-size: 16px;
+            }
+
+
+            /*=====cụm 1=====*/
+            .tab-content #lichtrinh .p-1{   /*chữ "đêm"*/
+                margin-left: 13px;
+            }
+            .tab-content #lichtrinh .li-1{   /*dấu chấm to */
+                font-size: 50px;
+                margin-top: -58px;
+                margin-left: 74px;
+                color:#008fea;
+                padding-bottom: -50px;
+            }
+            .tab-content #lichtrinh .li-1 span{      /*địa điểm*/
+                font-size: 18px;
+                margin-left: -30px;
+            }
+            .tab-content #lichtrinh .nd-lichtrinh1{      /*nội dung lịch trình*/
+                margin-left: 110px;
+                margin-top: 50px;
+                font-size: 14px;
+                /*clear: both;    /*xóa phía cả 2 phía dưới*/
+            }
+
+            .tab-content #lichtrinh .duong-ngancach1{ /*đường ngăn cách*/
+                border-left: 3px solid #cccccc;
+                margin-left: 30px;
+                margin-top: -30px;
+                height: 115px;
+                float:left; 
+                
+            }
+
+
+            /*=====cụm 2=====*/
+            .tab-content #lichtrinh .cum2{      /*khung chứa all cụm 2*/
+                margin-top: -9px;
+            }
+            .tab-content #lichtrinh .cum2 .p-2{   /*chữ "ngày 1"*/
+                margin-left: 0px;
+            }
+            .tab-content #lichtrinh .cum2 .li-2{   /*dấu chấm to */
+                font-size: 50px;
+                margin-left: 74px;
+                margin-top: -58px;
+                color:#008fea;
+                
+            }
+            .tab-content #lichtrinh .li-2 span{      /*địa điểm*/
+                font-size: 18px;
+                margin-left: -30px;
+            }
+            .tab-content #lichtrinh .duong-ngancach2{       /*đường ngăn cách*/
+                border-left: 3px solid #cccccc;
+                margin-left: 30px;
+                margin-top: -75px;
+                height: 390px; 
+                float:left;          
+            }
+            .tab-content #lichtrinh .nd-lichtrinh2{      /*nội dung lịch trình*/
+                margin-left: 110px;
+                margin-top: 70px;
+                font-size: 14px;
+                /*clear: both;    /*xóa phía cả 2 phía dưới*/
+            }
+            .tab-content #lichtrinh .nd-lichtrinh2 ul li{
+                margin-bottom: 10px;
+            }
+
+
+            /*=====cụm 3=====*/
+            .tab-content #lichtrinh .cum3{      /*khung chứa all cụm 2*/
+                margin-top: -6px;
+                
+            }
+            .tab-content #lichtrinh .cum3 .p-3{   /*chữ "ngày 2"*/
+                margin-left: 0px;
+            }
+            .tab-content #lichtrinh .cum3 .li-3{   /*dấu chấm to */
+                font-size: 50px;
+                margin-left: 74px;
+                margin-top: -58px;
+                color:#008fea;
+                
+            }
+            .tab-content #lichtrinh .li-3 span{      /*địa điểm*/
+                font-size: 18px;
+                margin-left: -30px;
+            }
+            .tab-content #lichtrinh .duong-ngancach3{   /*đường ngăn cách*/
+                border-left: 3px solid #cccccc;
+                margin-left: 30px;
+                margin-top: -72px;
+                height: 390px; 
+                float:left;          
+            }
+            .tab-content #lichtrinh .nd-lichtrinh3{      /*nội dung lịch trình*/
+                margin-left: 110px;
+                margin-top: 70px;
+                font-size: 14px;
+                /*clear: both;    /*xóa phía cả 2 phía dưới*/
+            }
+            .tab-content #lichtrinh .nd-lichtrinh3 ul li{
+                margin-bottom: 10px;
+                
+            }
+
+            /*=====cụm 4=====*/
+            .tab-content #lichtrinh .cum4{      /*khung chứa all cụm 2*/
+                margin-top: -3px;
+                
+            }
+            .tab-content #lichtrinh .cum4 .p-4{   /*chữ "ngày 3"*/
+                margin-left: 0px;
+            }
+            .tab-content #lichtrinh .cum4 .li-4{   /*dấu chấm to */
+                font-size: 50px;
+                margin-left: 74px;
+                margin-top: -58px;
+                color:#008fea;
+                
+            }
+            .tab-content #lichtrinh .li-4 span{      /*địa điểm*/
+                font-size: 18px;
+                margin-left: -30px;
+            }
+            .tab-content #lichtrinh .duong-ngancach4{   /*đường ngăn cách*/
+                border-left: 3px solid #cccccc;
+                margin-left: 30px;
+                margin-top: -72px;
+                height: 290px; 
+                float:left;          
+            }
+            .tab-content #lichtrinh .nd-lichtrinh4{      /*nội dung lịch trình*/
+                margin-left: 110px;
+                margin-top: 50px;
+                font-size: 14px;
+                /*clear: both;    /*xóa phía cả 2 phía dưới*/
+            }
+
+            /*=====cụm 5=====*/
+            .tab-content #lichtrinh .cum5{      /*khung chứa all cụm 2*/
+                margin-top: -8px;
+                
+            }
+            .tab-content #lichtrinh .cum5 .p-5{   /*chữ "ngày 1"*/
+                margin-left: 0px;
+            }
+            .tab-content #lichtrinh .cum5 .li-5{   /*dấu chấm to */
+                font-size: 50px;
+                margin-left: 74px;
+                margin-top: -58px;
+                color:#008fea;
+                
+            }
+            .tab-content #lichtrinh .li-5 span{      /*địa điểm*/
+                font-size: 18px;
+                margin-left: -30px;
+            }
+            .tab-content #lichtrinh .duong-ngancach5{   /*đường ngăn cách*/
+                border-left: 3px solid #cccccc;
+                margin-left: 30px;
+                margin-top: -72px;
+                height: 222px; 
+                float:left;          
+            }
+            .tab-content #lichtrinh .nd-lichtrinh5{      /*nội dung lịch trình*/
+                margin-left: 110px;
+                margin-top: 50px;
+                font-size: 14px;
+                /*clear: both;    /*xóa phía cả 2 phía dưới*/
+            }
+
+            /*phần đánh giá*/
+            .tab-content #danhgia .khung-dg{        /*khung chứa nội dung đánh giá*/
+                border: 2px solid #37b721;
+                padding-top: 30px;
+                padding-bottom: 30px;
+            }
+            .tab-content #danhgia .khung-dg .tieude-dg{     /*text tiêu đề đánh giá*/
+                font-size: 22px;
+                margin-left: 30px;
+            }
+            .tab-content #danhgia .khung-dg .tieude-dg-2{     /*text đánh giá*/
+                margin-left: 30px;
+            }
+
+            .tab-content #danhgia .khung-dg .sao-1{     /*cụm 1 sao*/
+                margin-left: 30px;
+                padding-right: 5px;
+                border-right: 1px solid #AAAAAA;
+                font-size: 18px;
+                color: #DDDDDD;
+            }
+            .tab-content #danhgia .khung-dg .sao-2{     /*cụm 2 sao*/
+                margin-left: 5px;
+                padding-right: 5px;
+                border-right: 1px solid #AAAAAA;
+                font-size: 18px;
+                color: #DDDDDD;
+            }
+            .tab-content #danhgia .khung-dg .sao-3{     /*cụm 3 sao*/
+                margin-left: 5px;
+                padding-right: 5px;
+                border-right: 1px solid #AAAAAA;
+                font-size: 18px;
+                color: #DDDDDD;
+            }
+            .tab-content #danhgia .khung-dg .sao-4{     /*cụm 4 sao*/
+                margin-left: 5px;
+                padding-right: 5px;
+                border-right: 1px solid #AAAAAA;
+                font-size: 18px;
+                color: #DDDDDD;
+            }
+            .tab-content #danhgia .khung-dg .sao-5{     /*cụm 5 sao*/
+                margin-left: 5px;
+                padding-right: 5px;
+                border-right: 1px solid #AAAAAA;
+                font-size: 18px;
+                color: #DDDDDD;
+            }
+            .tab-content #danhgia .dg-1{        /*chữ đánh giá*/
+                font-size: 20px;
+            }
+            .tab-content #danhgia .khung-dg a{
+                text-decoration: none;
+            }
+            .tab-content #danhgia .khung-dg .sao-1:hover{   /*hover đổi màu sao*/
+                color:rgb(255, 174, 0);
+            }
+            .tab-content #danhgia .khung-dg .sao-2:hover{   /*hover đổi màu sao*/
+                color:rgb(255, 174, 0);
+            }
+            .tab-content #danhgia .khung-dg .sao-3:hover{   /*hover đổi màu sao*/
+                color:rgb(255, 174, 0);
+            }
+            .tab-content #danhgia .khung-dg .sao-4:hover{   /*hover đổi màu sao*/
+                color:rgb(255, 174, 0);
+            }
+            .tab-content #danhgia .khung-dg .sao-5:hover{   /*hover đổi màu sao*/
+                color:rgb(255, 174, 0);
+            }
+
+            .tab-content #danhgia .khung-dg .nhanxet{       /* phần chứa ô viết nhận xét*/
+                margin-left: 30px;
+                margin-top: 30px;
+            }
+            .tab-content #danhgia .khung-dg .nhanxet #o-nhan-xet{
+                width: 95%;          /*ô viết nhận xét*/
+                height: 150px;
+            }
+
+            .tab-content #danhgia .khung-dg .form-group{
+                margin-left: 30px;          /*form tên và email*/
+                margin-top: 30px;
+            }
+            .tab-content #danhgia .khung-dg .nut-send{
+                margin-left: 20px;          /*nút gửi*/
+                margin-top: 30px;
+                width: 50px;
+                background-color: #37b721;
+                color: #fff;
+            }
+            .tab-content #danhgia .khung-dg .nut-send:hover{
+                background-color: #179102;      /*hover nút gửi*/
+            }
+
+/*=======================================================================================================================*/
+            /* 4. phần sản phẩm tương tự*/
+
+            .sp-tuongtu{        /*khung chứa all nội dung*/
+                border-top: 1px solid #dddddd;
+                width: 80%;
+                margin-left: 10.5%;
+                margin-top: 30px;
+                
+            }
+            .sp-tuongtu h3{         /*chữ "sản phẩm tương tự"*/
+                font-weight: bold;
+                padding-bottom: 25px;
+            }
+            .sp-tuongtu .row .thumbnail-sp-tt .thumbnail{
+                background-color: #EEEEEE;      /*khung chứa hình*/
+                box-shadow: 5px 5px 10px 3px #5c5757;
+                width: 100%;
+                height: 430px;
+            }
+            .sp-tuongtu .row .thumbnail-sp-tt .thumbnail:hover{
+                background-color: #FFFF99;     /* hover khung chứa hình*/
+            }
+            .sp-tuongtu .row .thumbnail-sp-tt .thumbnail .caption{
+                color: #000;        /* text tên tour*/
+            }
+
+            .sp-tuongtu .row .thumbnail-sp-tt .thumbnail img{
+                width: 100%;       /*hình*/
+                height: 300px;
+            }
+            .sp-tuongtu .row .thumbnail-sp-tt .thumbnail .caption P{
+                font-size: 18PX;
+                margin-top: -20px;
+            }
+            .sp-tuongtu .row .thumbnail-sp-tt .dubai img:hover{
+                content: url('./image/28.jpg');     /*hover đổi ảnh du bai*/
+                transform: scale(1.04);
+                transition: linear 0.2s;
+            }
+            .sp-tuongtu .row .thumbnail-sp-tt .canada img:hover{
+                content: url('./image/26.jpg');     /*hover đổi ảnh canada*/
+                transform: scale(1.04);
+                transition: linear 0.2s;
+            }
+            .sp-tuongtu .row .thumbnail-sp-tt .thailan img:hover{
+                content: url('./image/25.jpg');     /*hover đổi ảnh thái lan*/
+                transform: scale(1.04);
+                transition: linear 0.2s;
+            }
+            .sp-tuongtu .row .thumbnail-sp-tt .nhatban img:hover{
+                content: url('./image/27.jpg');     /*hover đổi ảnh nhật bản*/
+                transform: scale(1.04);
+                transition: linear 0.2s;
+            }
+
+/*================================================================================================================*/
+        /* 8. fooer*/
+
+            /*phần icon liên kết mạng xã hội*/
+            .d-flex{
+                padding-top: 30px;
+                background-color: #363636;
+            }
+            .d-flex .d-lg-block span{   /*tiêu đề liên kết mạng xã hội*/
+                font-size: 18px;
+                color: #fff;
+            }
+            .d-flex .icon-mangxakoi .text-reset .fab{   /*định dạng icon mạng xã hội*/
+                font-size: 30px;
+                margin: 20px;
+                color: #BEBEBE;
+                 
+            }
+            .d-flex .icon-mangxakoi .text-reset .fa-facebook-f:hover{
+                color: #4064ac;     /*hover icon*/
+            }
+            .d-flex .icon-mangxakoi .text-reset .fa-twitter:hover{
+                color: #1c9cea;     /*hover icon*/
+            }
+            .d-flex .icon-mangxakoi .text-reset .fa-google:hover{
+                color: #dd4b39;     /*hover icon*/
+            }
+            .d-flex .icon-mangxakoi .text-reset .fa-instagram:hover{
+                color: #ad30b7;     /*hover icon*/
+            }
+            .d-flex .icon-mangxakoi .text-reset .fa-youtube:hover{
+                color: #ff0000;     /*hover icon*/
+            }
+
+            /*phần thông tin công ty*/
+            .all-thongtin{
+                color:#fff;
+                background-color: #363636;
+               /* padding-top: 0px;*/
+            }
+            .all-thongtin .container .row .thongtin-lienhe{ /*phần khung chứa thông tin liên hệ công tin*/
+                text-align:initial;
+                
+            }
+            .all-thongtin .container .row .thongtin-lienhe h6{
+                font-size: 22px;        /*tên công ty*/
+                padding-bottom: 10px;
+                color:rgb(255, 174, 0);
+            }
+            .all-thongtin .container .row .thongtin-lienhe .link-lienhe a{
+                text-decoration: none;      /*phần link liên hệ của công ty*/
+                margin-left: 10px;
+                color:#fff;
+            }
+            .all-thongtin .container .row .thongtin-lienhe .link-lienhe a:hover{
+                color:rgb(255, 174, 0);        /* hover phần link liên hệ của công ty*/
+            }
+            .all-thongtin .container .row .thongtin-lienhe .form-group{
+                width: 330px;   /*form email*/
+            }
+            .all-thongtin .container .row .thongtin-lienhe .form-group button{
+                margin-top: 10px;       /*nút gửi*/
+            }
+            .all-thongtin .container .row .thongtin-lienhe .form-group button:hover{
+                background-color: rgb(255, 174, 0);
+            }
+
+
+            /*phần 'tin tức' + 'góc khách hàng'*/
+            .all-thongtin .container .row .tieude-tt{   /*phần khung chứa 'tin tức' + 'góc khách hàng' + 'tour phổ biến'*/
+                text-align: initial;
+                margin-left: 160px;
+
+            }
+            .all-thongtin .container .row .tieude-tt h6{   /*chữ tin tức*/
+                font-size: 16px;
+                color:rgb(255, 174, 0);
+            }
+
+            .all-thongtin .container .row .tieude-tt ul li a{  
+                text-decoration: none;      /*định dạng thẻ a chung cho 'tin tức' và 'khách hàng'*/
+                color: #fff;
+            }
+            .all-thongtin .container .row .tieude-tt ul li a:hover{
+                color:rgb(255, 174, 0);
+            }
+
+            /*phần bản quyền*/
+            footer .banquyen{
+                padding-bottom: 20px;
+                background-color: #363636;
+                color: #fff;
+            }
+
+        </style>
+        
+    </head>
+    <body>
+         <!-- 1. menu navbar-->
+         <nav class="navbar navbar-default sticky-top">
+            <div class="menu">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="./admin.html"><img src="./image/logo_light.PNG"></img></a>
+                 <!----   <a class="navbar-brand" href="#">HOANGVIET TOURS</a>-->
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link trangchu" href="./Trangchu.html"><b>TRANG CHỦ</b></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link gioithieu" href="#"><b>GIỚI THIỆU</b></a>
+                            </li>
+                            <li class="nav-item sub-menu">
+                                <a class="nav-link" href="#"><b>TOUR TRONG NƯỚC</b>
+                                    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                </a>
+                                <div class="dropdown-content">
+                                    <a class="dropdown-item" href="#">Du lịch Phú Quốc</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch Đà Lạt</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch Hạ Long</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch Côn Đảo</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch SaPa</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch Ninh Bình</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="./sanpham_trongnuoc.html">Du lịch Đà Nẵng</a>
+                
+                                </div>
+                            </li>
+                            <li class="nav-item sub-menu">
+                                <a class="nav-link" href="./danhmucsanpham.html"><b>TOUR NƯỚC NGOÀI</b>
+                                    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                </a>
+                                <div class="dropdown-content">
+                                    <a class="dropdown-item" href="./sanpham.html">Du lịch Hàn Quốc</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch Nhật Bản</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch Canada</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch Thái Lan</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch Singapore</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch Indonesia</a>
+                                    <div class="dropdown-divider"><hr></div>
+                                    <a class="dropdown-item" href="#">Du lịch DuBai</a>
+                                </div>
+                            </li>   
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><b>TIN TỨC</b></a>
+                            </li>
+                            <li class="nav-item lienhe">
+                                <a class="nav-link" href="#"><b>LIÊN HỆ</b></a>
+                            </li>
+
+                            <li class="nav-item sub-timkiem">
+                               
+                                    <a class="nav-link icon icon1" href="#">
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>                            
+                                    </a>
+
+                                    <div class="o-timkiem"> <!--ẩn-->
+                                        <input type="text" name="o-timkiem" id="o-timkiem" placeholder="  Nhập nội dung..." />
+                                        <a href="#">
+                                                <span class="nut-tk">
+                                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                                </span>
+                                        </a> 
+                                    </div>
+                               
+                            </li>
+                            <li class="nav-item login">
+                                <a class="nav-link icon icon2" href="#">
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                </a>
+
+                                <div class="dk-and-dn">
+                                    <div>
+                                        <a href="./khachhang_dangnhap.html">
+                                            <p><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;  Đăng nhập</p>
+                                        </a>
+                                    </div>
+                                    <div>
+                                    <a href="./khachhang_dangky.html">
+                                        <p><i class="fas fa-plus"></i>&nbsp;  Tạo tài khoản</p>
+                                    </a>
+                                    </div>
+                                </div>
+                            </li>
+                      </ul>
+                      
+                </div>
+            </div> <!-- /.container-fluid -->
+        </nav>
+
+ <!--=================================================================================================================================-->      
+        <!-- 2. chi tiết sản phẩm tour-->
+        <!--phần hình bên trái-->
+        <div class="container-fluid khung">
+            <div class="col-sm-12 col-md-6 image-sanpham">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                   
+                  
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active" data-toggle="tooltip" title="Hương Viễn Đình tại Cung điện Hoàng gia Gyeongbok">
+                            <img src="./image/6.png" alt="...">
+                            <div class="carousel-caption">
+                            
+                            </div>
+                        </div>
+                        <div class="item" data-toggle="tooltip" title="Cung điện Hoàng gia Gyeongbok">
+                            <img src="./image/22.png" alt="...">
+                            <div class="carousel-caption">
+                            
+                            </div>
+                        </div>
+                        <div class="item" data-toggle="tooltip" title="Tháp Namsan">
+                            <img src="./image/23.jpg" alt="...">
+                            <div class="carousel-caption">
+                            
+                            </div>
+                        </div>
+                        <div class="item" data-toggle="tooltip" title="Công viên giải trí của Everland">
+                            <img src="./image/24.jpg" alt="...">
+                            <div class="carousel-caption">
+                            
+                            </div>
+                        </div>
+                      
+                    </div>
+                  
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div> <!--carousel slide-->
+            </div> <!--image-sanpham-->
+
+            <!--phần thông ti bên phải-->
+            <div class="col-sm-12 col-md-6 thongtin-sanpham">
+                <h2><b>Tour Hàn Quốc 4 ngày (giá tốt nhất)</b></h2>
+                <hr>
+                <p class="gia" style="color: red;"><b><i>20,000,000 </i><u>đ</u></b></p>
+                <p class="gioithieu"><i>Hàn Quốc là 1 đất nước mang đậm nét truyền thống văn hóa phương Đông, nằm giữa 2 nền văn hóa lớn là Trung Quốc và Nhật Bản nên văn hóa Hàn Quốc cũng có sự pha trộn của 2 nên văn hóa này nhưng vẫn giữ được những nét văn hóa riêng truyền thống đậm đà bản sắc, đất nước Hàn Quốc xinh đẹp hiện đang trở thành 1 trong những điểm đến hàng đầu của khách du lịch quốc tế. </i></p>
+
+                <div class="nut-dat">
+                   <!---- <a href="#"><b>ĐẶT NGAY</b></a>-->
+                    <button type="button" class="btn btn-primary nut" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">ĐẶT NGAY</button>
+                        
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="exampleModalLabel">Nhập Thông Tin Của Bạn:</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="ten" class="control-label">Họ và tên (*)</label>
+                                            <input type="text" class="form-control" id="ten">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cmnn" class="control-label">Số CMNN (*)</label>
+                                            <input type="text" class="form-control" id="cmnn">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sdt" class="control-label">Số điện thoại (*)</label>
+                                            <input type="text" class="form-control" id="ten">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email" class="control-label">Email (*)</label>
+                                            <input type="email" class="form-control" id="email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="diachi" class="control-label">Địa chỉ (*)</label>
+                                            <input type="text" class="form-control" id="diachi">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nkh" class="control-label">Nơi khởi hành (*)</label>
+                                            <input type="text" class="form-control" id="nkh">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="songuoi" class="control-label">Số người (*)</label>
+                                            <input type="text" class="form-control" id="songuoi">
+                                        </div>
+                                        
+                                    </form>
+                                </div>
+                                <div class="tong-tien">
+                                    Tổng tiền: <b style="color:red;"> 20,000,000 <u>đ</u></b>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                                    <button type="button" class="btn btn-primary dat">ĐẶT</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!--nut-dat-->
+
+                <hr>
+                <span>Danh mục: </span>
+                <a href="" class="danhmuc">Du lịch Hàn Quốc, </a>
+                <a href="./danhmucsanpham.html" class="danhmuc">Du lịch Nước ngoài</a>
+
+                <div class="icon-share"> 
+                    <a href="https://www.facebook.com/" class="me-4 text-reset" data-toggle="tooltip" title="Giới thiệu với bạn bè qua facebook của bạn !" >
+                        <i class="fab fa-facebook-f"></i>                        
+                    </a>
+                    <a href="https://twitter.com/login" class="me-4 text-reset" data-toggle="tooltip" title="Giới thiệu với bạn bè qua twitter của bạn !">
+                        <i class="fab fa-twitter"></i>                       
+                    </a>
+                    <a href="https://accounts.google.com/" class="me-4 text-reset" data-toggle="tooltip" title="Gửi bằng Gmail !">
+                        <i class="fab fa-google"></i>                      
+                    </a>
+                     <a href="https://www.instagram.com/accounts/login/" class="me-4 text-reset" data-toggle="tooltip" title="Giới thiệu với bạn bè qua instagram của bạn !">
+                        <i class="fab fa-instagram"></i>           
+                    </a>
+                   
+            </div>  <!--thongtin-sanpham-->
+                  
+            </div>
+        </div>  <!--container-fluid-->
+
+<!--=================================================================================================================================-->
+    <!--3. tabs mô tả sản phẩm-->
+        <div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#mota" aria-controls="home" role="tab" data-toggle="tab">MÔ TẢ</a></li>
+                <li role="presentation"><a href="#bosung" aria-controls="profile" role="tab" data-toggle="tab">THÔNG TIN BỔ SUNG</a></li>
+                <li role="presentation"><a href="#lichtrinh" aria-controls="messages" role="tab" data-toggle="tab">LỊCH TRÌNH</a></li>
+                <li role="presentation"><a href="#ghichu" aria-controls="settings" role="tab" data-toggle="tab">GHI CHÚ</a></li>
+                <li role="presentation"><a href="#danhgia" aria-controls="settings" role="tab" data-toggle="tab">ĐÁNH GIÁ (0)</a></li>
+            </ul>
+          
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="mota">
+                    <p><b>GIÁ BAO GỒM: </b></p>
+                    <ul>
+                        <li>
+                            Vé máy bay khứ hồi theo chương trình tour. (Bao gồm 7kg hành lý xách tay và 20kg hành lý kí gửi. Không bao gồm bữa ăn trên máy bay nếu Qúy khách có nhu cầu vui lòng đóng thêm 300.000vnđ/khách/khứ hồi).
+                        </li>
+                        <li>
+                            Thuế hàng không gồm : thuế phi trường 2 nước, phí an ninh, phụ thu phí xăng dầu, bảo hiểm hàng không…
+                        </li>
+                        <li>
+                            Khách sạn tiêu chuẩn 3* như chương trình (02 Người lớn/1 Phòng đôi). Bố trí phòng ba khi cần thiết (01 giường lớn + 01 extra bed). Một số khách sạn tham khảo: Seoul – Youngdong Hotel, Yoido Hotel, Kobos Hotel, Benhur Hotel, Centro Hotel hoặc tương đương; Jeju – Jeju Pearl Hotel, Jeju Hawaii Hotel, Parside Hotel hoặc tương đương.
+                        </li>
+                        <li>
+                            Phương tiện vận chuyển theo chương trình.
+                        </li>
+                        <li>
+                            Chi phí ăn uống theo chương trình.
+                        </li>
+                        <li>
+                            Phí vào cổng các điểm tham quan theo chương trình.
+                        </li>
+                        <li>
+                            Bảo hiểm Du Lịch (210.000.000VNĐ/ trường hợp). Không áp dụng cho khách từ 85 tuổi trở lên.
+                        </li>
+                        <li>
+                            Trưởng đoàn DL HOANGVIETTOURS suốt tuyến.
+                        </li>
+                        <li>
+                            Visa nhập cảnh Hàn Quốc.
+                        </li>
+                        <li>
+                            HDV địa phương tại mỗi nơi đến.
+                        </li>
+                        <li>
+                            Quà tặng của HOANGVIETTOURS.
+                        </li>
+                    </ul>
+                    <p><b>KHÔNG BAO GỒM: </b></p>
+                    <ul>
+                        <li>
+                            Chi phí làm hộ chiếu (còn hạn sử dụng trên 6 tháng tính tới ngày về).
+                        </li>
+                        <li>
+                            Visa tái nhập Việt Nam cho người quốc tịch nước ngoài là 35usd/khách/lần. Riêng những nước được miễn visa Việt Nam như: Anh, Pháp, Đức, Tây Ban Nha, Italia, Nhật Bản, Hàn Quốc, Nauy, Phần Lan, Đan Mạch, Thụy Điển, Nga,… để được miễn visa thì các lần nhập cảnh vào Việt Nam phải cách nhau từ 30 ngày trở lên, nếu dưới 30 ngày thì phải làm công văn tái nhập là 115usd/khách/lần. Đối với trường hợp khách có visa Việt Nam nhiều lần, khách không cần làm visa tái nhập nhưng lưu ý mỗi lần nhập cảnh không quá từ 3 đến 6 tháng (tùy theo visa)
+                        </li>
+                        <li>
+                            Tiền phục vụ, khuân vác, điện thoại, giặt ủi…
+                        </li>
+                        <li>
+                            Hành lý quá cước qui định và các chi phí cá nhân phát sinh ngoài chương trình.
+                        </li>
+                        <li>
+                            Tiền bồi dưỡng cho hướng dẫn và tài xế địa phương 6usd/người/ngày.
+                        </li>
+                    </ul>
+                    <p><b>GIÁ VÉ TRẺ EM: Theo quy định của hãng hàng không và dịch vụ</b></p>
+                    <ul>
+                        <li>
+                            Dưới  2 tuổi: tính 30% giá tour ngủ ghép chung giường với người lớn).
+                        </li>
+                        <li>
+                            Từ 2 – dưới 11 tuổi: 90% giá tour (ngủ ghép giường với người lớn). Trường hợp có 2 trẻ đi kèm thì đóng tiền cho 1 trẻ như người lớn để lấy thêm giường ngủ.
+                        </li>
+                        <li>
+                            Từ 11 tuổi trở lên tính bằng giá người lớn.
+                        </li>
+                       
+                    </ul>
+                    <p><b>LƯU Ý: </b></p>
+                    <ul>
+                        <li>
+                            Khi đăng ký tour du lịch, Quý khách vui lòng đọc kỹ chương trình, giá tour, các khoản bao gồm cũng như không bao gồm, các điều kiện hủy tour trong chương trình. Trong trường hợp Quý khách không trực tiếp đến đăng ký tour mà do người khác đến đăng ký thì Quý khách vui lòng tìm hiểu kỹ chương trình từ người đăng ký cho mình.
+                        </li>
+                        <li>
+                            Khi tới đăng ký, Quý khách đem theo Passport (bản chính) và đóng cọc 50% tổng tiền tour khi đăng ký tour.
+                        </li>
+                        <li>
+                            Giá tour khách mang hộ chiếu nước ngoài bằng giá tour khách mang hộ chiếu Việt Nam.
+                        </li>
+                        <li>
+                            Quý khách vui lòng hoàn tất thủ tục và thanh toán số tiền tour còn lại trước 7 ngày khởi hành. Trường hợp Quý khách bị từ chối Visa, chúng tôi sẽ hoàn trả lại tiền tour và charge phí visa 2.000.000vnđ.
+                        </li>
+                        <li>
+                            Do tour khách lẻ ghép đoàn, nếu Quý khách tự ý tách đoàn, không tham gia chương trình cùng đoàn Quý khách sẽ đóng phụ thu 120usd/ngày/khách.
+                        </li>
+                        <li>
+                            Không giải quyết cho bất kỳ lý do thăm thân, kinh doanh… để tách đoàn. Tùy vao trường hợp cần thiết muốn tách đoàn khách phải báo trước với công ty và chịu phí theo quy định.
+                        </li>
+                        <li>
+                            Tùy theo điều kiện thực tế mà chương trình tham quan có thể thay đổi hành trình lên xuống cho phù hợp tuy nhiên các tuyến điểm Du Lịch vẫn đảm bảo đầy đủ. Các chuyến bay có thể thay đổi tùy thuộc vào các hãng hàng không, thời tiết…
+                        </li>
+                        <li>
+                            Trường hợp Quý khách không được xuất cảnh và nhập cảnh vì lý do cá nhân, Du Lịch Việt sẽ không chịu trách nhiệm và sẽ không hoàn trả tiền tour.
+                        </li>
+                        <li>
+                            Tùy theo tình hình cấp Visa của Lãnh Sự Quán và vé máy bay, ngày khởi hành cỏ thể dời lại từ 1 đến 7 ngày so với ngày khởi hành ban đầu.
+                        </li>
+                        <li>
+                            Do tính chất là đoàn ghép khách lẻ, Du Lịch Việt sẽ có trách nhiệm thu nhận khách cho đủ đoàn (10 khách người lớn trở lên) thì đoàn sẽ khởi hành đúng lịch trình. Nếu số lượng đoàn dưới 10 khách, Công ty có trách nhiệm thông báo cho khách trước ngày khởi hành 7 ngày và sẽ thỏa thuận lại ngày khởi hành mới, hoặc hoàn trả lại toàn bộ số tiền cho khách đã đăng ký trước đó.
+                        </li>
+                        <li>
+                            Các chuyến bay và giờ bay có thể thay đổi giờ chót tùy do phụ thuộc vào các hãng hàng không.
+                        </li>
+                        <li>
+                            Hồ sơ xin visa sau khi nộp vào Lãnh Sự Quán sẽ không được hoàn trả lại.
+                        </li>
+                        <li>
+                            Sau khi Công ty thông báo ký quỹ mà Quý khách không thanh toán tiền ký quỹ (dù đã đậu visa) đồng nghĩa khách chưa hoàn tất thủ tục thanh toán và được coi là tự hủy tour. Quý khách sẽ không được tham gia chuyến đi và Công ty sẽ áp dụng mức phạt theo quy định mục Hủy vé.
+                        </li>
+                        <li>
+                            Trường hợp trẻ em dưới 18 tuổi: Nếu đi cùng bố/mẹ phải mang theo giấy khai sinh có dấu mộc đỏ, nếu không đi cùng bố/mẹ phải mang theo giấy ủy quyền có xác nhận của chính quyền địa phương.
+                        </li>
+                        <li>
+                            Trường hợp khách từ 75 tuổi phải ký giấy xác nhận sức khỏe và đi kèm 1 người thân từ 18 – 55 tuổi.
+                        </li>
+                    </ul>
+                    <p>Nhằm đảm bảo cho quá trình xin cấp thị thực nhập cảnh vào HÀN QUỐC của Quý khách được thuận tiện và đạt kết quả tốt nhất, xin Quý khách vui lòng chuẩn bị & hoàn tất các hồ sơ theo hướng dẫn sau đây :</p>
+                    <p><b>HỒ SƠ CÁ NHÂN: </b></p>
+                    <ul>
+                        <li>
+                            2 Hình 3,5 x 4,5 (mới chụp trong vòng 6 tháng).
+                        </li>
+                        <li>
+                            Bản sao công chứng tất cả các trang hộ khẩu hiện tại.
+                        </li>
+                        <li>
+                            Bản sao công chứng giấy đăng ký kết hôn. Trường hợp ly hôn phải có xác nhận ly hôn.
+                        </li>
+                        <li>
+                            Hộ chiếu còn giá trị trên 6 tháng, có ký tên.
+                        </li>
+                        <li>
+                            Hợp đồng lao động hoặc giấy phép đăng ký Kinh Doanh nếu là chủ doanh nghiệp, biên lai thuế 3 tháng gần nhất
+                        </li>
+                        <li>
+                            Đơn xin nghỉ phép có xác nhận của công ty.
+                        </li>
+                        <li>
+                            Bảo hiểm y tế, Bảo hiểm Xã hội.
+                        </li>
+                        <li>
+                            Bằng chứng về quyền sở hữu nhà, đất, xe ôtô (nếu có).
+                        </li>
+                        <li>
+                            Sổ tiết kiệm bản gốc (LSQ yêu cầu đối chiếu) và Xác nhận số dư sổ tiết kiệm bằng tiếng Anh bản gốc. (Lưu ý sổ tiết kiệm phải có giá trị ít nhất 100.000.000VNĐ/Khách và có kỳ hạn ít nhất là 3 tháng trở lên)
+                        </li>
+                        <li>
+                            Nộp kèm theo hộ chiếu cũ (nếu có).
+                        </li>
+                        <li>
+                            Chứng Minh Nhân Dân photo có công chứng.
+                        </li>
+                        <li>
+                            Thẻ học sinh, sinh viên nếu còn đi học
+                        </li>
+                        <li>
+                            rẻ em dưới 18 tuổi phải có giấy khai sinh công chứng. Nếu không đi cùng cha mẹ phải có giấy ủy quyền.
+                        </li>
+                        <p>(Tất cả hồ sơ phải sao y bản chính không quá 3 tháng).</p>
+                    </ul>
+                </div> <!--mô tả-->
+
+                <div role="tabpanel" class="tab-pane" id="bosung">
+                    <div class="noidung-bs">
+                        <p><b>NƠI KHỞI HÀNH:&nbsp;&nbsp;&nbsp;&nbsp; </b> TP. Hồ Chí Minh</p>   
+                    </div>
+                    <div class="noidung-bs">
+                        <p><b>SỐ NGÀY:&nbsp;&nbsp;&nbsp;&nbsp; </b> 4</p>         
+                    </div>
+                    <div class="noidung-bs">
+                        <p><b>KHÁCH SẠN:&nbsp;&nbsp;&nbsp;&nbsp; </b> 5 sao</p>                        
+                    </div>
+                    <div class="noidung-bs">
+                        <p><b>LOẠI GIƯỜNG:&nbsp;&nbsp;&nbsp;&nbsp; </b> Đôi</p>                        
+                    </div>
+                </div> <!--thông tin bổ xung-->
+
+                <!--lịch trình-->
+                <div role="tabpanel" class="tab-pane" id="lichtrinh">
+                     <!--===cụm.1=============================================-->
+                    <div  class="cum1">
+                        <p class="p-1"><i><b>Đêm</b></i></p>
+                        <span class="icon-lichtrinh">
+                            
+                            <i class="fas fa-plane"></i>
+                        </span>
+                        <li class="li-1"><span>TP.HCM – SEOUL</span></li>
+                        <div class="duong-ngancach1">
+                            <!--đường ngăn cách-->
+                        </div>
+
+                        <p class="nd-lichtrinh1">
+                            <b>22H30</b> Trưởng đoàn <b>CÔNG TY DU LỊCH HOANGVIETTOURS</b> đón Quý khách tại cổng D2, ga đi quốc tế phi trường Tân Sơn Nhất làm thủ tục đáp chuyến bay <b>VJ862 (02:30 – 09:40)</b> khởi hành đi Seoul – thủ đô Hàn Quốc. Quý khách nghỉ đêm trên máy bay.
+                        </p>
+                    </div> <!--cụm 1-->
+                    <br>
+
+                    <!--===cụm.2=============================================-->
+                    <div class="cum2">
+                        <p class="p-2"><i><b>Ngày 1</b></i></p>
+                        <span class="icon-lichtrinh">                   
+                            <i class="fas fa-car"></i>
+                        </span>
+                        <li class="li-2"><span>THỦ ĐÔ SEOUL (Ăn Hai Bữa)</span></li>
+                        <div class="duong-ngancach2">
+                            <!--đường ngăn cách-->
+                        </div>
+
+                        <div class="nd-lichtrinh2">
+                            <p>Đến sân bay quốc tế Incheon, xe và hướng dẫn viên địa phương đón đoàn tại sân bay, đưa đoàn về Soeul ăn trưa tại  nhà hàng địa phương, sau đó tham quan:</p>
+                            <ul>
+                                <li>
+                                    <b>Dinh Tổng thống (Blue House)</b>– nơi Tổng thống Hàn Quốc đang  sinh sống và làm việc.
+                                </li>
+                                <li>
+                                    <b>Cung điện Hoàng gia Gyeongbok</b> – nằm ở phía bắc thủ đô Seoul đây là cung điện chính và lớn nhất của Ngũ Cung được xây dựng vào năm 1395 dưới triều đại JOSEON.
+                                </li>
+                                <li>
+                                    <b>Viện bảo tàng quốc gia</b>– Là bảo tàng quốc gia duy nhất về văn hóa dân gian, trưng bày khoảng 113.343 hiện vật về đời sống văn hóa.
+                                </li>
+                                <li>
+                                    Quý khách tham quan chụp hình tại  Quảng trường Gwanghwamum, Suối nhân tạo Cheonggychoen.
+                                </li>
+                                <li>
+                                    <b>Tháp N Seoul</b>– tọa lạc trên núi Namsan mang đến cho du khách những góc nhìn toàn cảnh của thành phố, và đã trở thành một biểu tượng của Seoul.(Không bao gồm phí thang máy lên tháp).
+                                </li>
+                            </ul>
+                            <p>Ăn tối, nhận phòng khách sạn và nghỉ ngơi. Nghỉ đêm tại Seoul.</p>
+                        </div>
+                    </div> <!--cụm 2-->
+                    <br>
+
+                    <!--===cụm.3=============================================-->
+                    <div class="cum3">
+                        <p class="p-3"><i><b>Ngày 2</b></i></p>
+                        <span class="icon-lichtrinh">                   
+                            <i class="fas fa-car"></i>
+                        </span>
+                        <li class="li-3"><span>SEOUL – EVERLAND (Ăn Ba Bữa)</span></li>
+                        <div class="duong-ngancach3">
+                            <!--đường ngăn cách-->
+                        </div>
+
+                        <div class="nd-lichtrinh3">
+                            <p>Ăn sáng tại khách sạn, đoàn khởi hành tham quan: </p>
+                            <ul>
+                                <li>
+                                    <b>Công viên giải trí của Everland</b> – một trong những thiên đường giải trí lớn nhất ở Seoul – nơi quý khách có thể tự do tham quan, chụp ảnh, và tham gia các trò chơi.
+                                </li>
+                            </ul>
+                            <p>Ăn trưa tại nhà hàng địa phương, đoàn tiếp tục tham quan:</p>
+                            <ul>
+                                <li>
+                                    Tham quan mua sắm tại cửa hàng thảo dược tinh dầu thông đỏ.
+                                </li>
+                                <li>
+                                    <b>Tham gia lớp học Kim Chi</b>và mặc trang phục truyền thống Hàn Quốc Hanbok.
+                                </li>
+                                <li>
+                                    <b>Chợ Dongdaemun</b>là một khu thương mại lớn bao gồm các khu chợ truyền thống và các trung tâm mua sắm bao phủ toàn bộ khu vực xung quanh Dongdaemun, một địa điểm nổi tiếng tại Hàn Quốc. Đây là khu mua sắm sỉ và lẻ lớn nhất của Hàn Quốc gồm 26 trung tâm mua sắm, 30.000 cửa hàng đặc sản, và 50.000 nhà sản xuất. Hàng hóa ở đây bao gồm lụa và vải, quần áo, giày dép và các phụ kiện, thiết bị điện tử, đồ da, đồ thể thao, văn phòng phẩm, các sản phẩm thú cưng và đồ chơi.
+                                </li>
+                            </ul>
+                            <p>Ăn tối. Quý khách thưởng thức show biểu diễn Nanta hoặc Drawing nổi tiếng tại Hàn Quốc. Nghỉ ngơi tại khách sạn.</p>
+                        </div>
+                    </div> <!--cụm 3-->
+                    <br>
+
+                    <!--===cụm.4=============================================-->
+                    <div class="cum4">
+                        <p class="p-4"><i><b>Ngày 3</b></i></p>
+                        <span class="icon-lichtrinh">                   
+                            <i class="fas fa-car"></i>
+                        </span>
+                        <li class="li-4"><span>SEOUL – ĐẢO NAMI (Ăn Ba Bữa)</span></li>
+                        <div class="duong-ngancach4">
+                            <!--đường ngăn cách-->
+                        </div>
+
+                        <div class="nd-lichtrinh4">
+                            <p>Ăn sáng. Đoàn khởi hành đi đảo Nami – hòn đảo mang vẻ đẹp bình yên nhờ phong cảnh thiên nhiên hữu tình, thơ mộng. Đây là nơi được lựa chọn làm bối cảnh quay bộ phim truyền hình nổi tiếng  “Bản tình ca mùa đông”, cũng như nhiều bộ phim Hàn nổi tiếng khác.</p>
+                            <br>
+                            <p>Ăn trưa tại nhà hàng địa phương, đoàn tiếp tục tham quan và mua sắm tại trung tâm nhân sâm chính phủ, cửa hàng mỹ phẩm nổi tiếng của Hàn Quốc và cửa hàng miễn thuế  Duty Free Plaza.</p>
+                            <br>
+                            <p>Ăn tối tại nhà hàng. Nghỉ ngơi tại khách sạn. </p>
+                            
+                        </div>
+                    </div> <!--cụm 4-->  
+                    <br>
+
+                    <!--===cụm5=============================================-->
+                    <div  class="cum5">
+                        <p class="p-5"><i><b>Ngày 4</b></i></p>
+                        <span class="icon-lichtrinh">
+                            
+                            <i class="fas fa-plane"></i>
+                        </span>
+                        <li class="li-5"><span>SEOUL – TP.HCM (Ăn Sáng)</span></li>
+                        <div class="duong-ngancach5">
+                            <!--đường ngăn cách-->
+                        </div>
+
+                        <p class="nd-lichtrinh5">
+                            Quý khách trả phòng và ăn sáng. Đoàn ra sân bay Incheon, trên đường đoàn ghé thăm siêu thị bách hóa Cheogha Grocery Store (Nếu kịp thời gian). Hướng dẫn viên làm thủ tục để Qúy khách đáp chuyến bay VJ863 (11:30 – 15:10) về phi trường Tân Sơn Nhất – TP. HCM. Sau khi làm thủ tục nhập cảnh và nhận lại hành lý cá nhân, trưởng đoàn CÔNG TY DU LỊCH HOANGVIETTOURS chào tạm biệt Quý khách. Kết thúc chuyến tham quan. Chia tay Quý khách và hẹn gặp lại.
+                        </p>
+                    </div> <!--cụm 1-->
+                </div> <!--lịch trình-->
+
+
+                <div role="tabpanel" class="tab-pane" id="ghichu" style="font-size: 20px; color: #555555;">Hiện tại chưa có ghi chú mới !</div>
+                <div role="tabpanel" class="tab-pane" id="danhgia">
+                    <p class="dg-1"><b>Đánh giá</b>
+                    <p>Chưa có đánh giá nào.</p><br><br>
+                    <div class="khung-dg">
+                        <p class="tieude-dg"><b>Hãy là người đầu tiên nhận xét "Tour Du lịch Hàn Quốc 4 ngày"</b></p>
+                        <p class="tieude-dg-2">Đánh giá của bạn</p>
+                        <a href=""><span class="glyphicon glyphicon-star sao-1" aria-hidden="true"></span></a>
+                        <a href=""><span class="sao-2">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </span> </a>
+                        <a href=""><span class="sao-3">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </span></a>
+                        <a href=""><span class="sao-4">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </span></a>
+                        <a href=""><span class="sao-5">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </span></a>
+                        <br>
+                        <div class="nhanxet">
+                            <label for="o-nhan-xet" > Nhận xét của bạn *</label><br>
+                            <input type="text" name="o-nhan-xet" id="o-nhan-xet" class="form-control" placeholder="viết nhận xét..."/>
+                        </div>
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="exampleInputName2">Tên : </label>
+                                <input type="text" class="form-control" id="exampleInputName2" placeholder="Tên của bạn...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail2">Email : </label>
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email của bạn...">
+                            </div>
+                            <button type="submit" class="btn btn-default nut-send">Gửi</button>
+                          </form>
+
+                    </div> <!--khung-dg-->
+                </div> <!--đánh giá-->
+            </div> <!--tab-content-->         
+        </div>
+
+<!--=================================================================================================================================-->
+    <!--4. phần sản phẩm tương tự-->
+        <div class="sp-tuongtu">
+            <h3>CÁC TOUR TƯƠNG TỰ</h3>
+
+            <div class="row">
+                <div class="col-sm-6 col-md-3 thumbnail-sp-tt">
+                    <div class="thumbnail dubai">
+                        <a href="#"><img src="./image/8.png" alt="..."></a>
+                        <div class="caption">
+                            <h3><i><b>DU LỊCH DU BAI</b></i></h3>
+                            <p style="color:red;"><b>65,000,000 <u>đ</u></b></p>                          
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 thumbnail-sp-tt">
+                    <div class="thumbnail canada">
+                        <a href="#"><img src="./image/5.png" alt="..."></a>
+                        <div class="caption">
+                            <h3><i><b>DU LỊCH CANADA</b></i></h3>
+                            <p style="color:red;"><b>50,000,000 <u>đ</u></b></p>                          
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 thumbnail-sp-tt">
+                    <div class="thumbnail thailan">
+                        <a href="#"><img src="./image/9.png" alt="..."></a>
+                        <div class="caption">
+                            <h3><i><b>DU LỊCH THÁI LAN</b></i></h3>
+                            <p style="color:red;"><b>15,000,000 <u>đ</u></b></p>                          
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 thumbnail-sp-tt">
+                    <div class="thumbnail nhatban">
+                        <a href="#"><img src="./image/7.png" alt="..."></a>
+                        <div class="caption">
+                            <h3><i><b>DU LỊCH NHẬT BẢN</b></i></h3>
+                            <p style="color:red;"><b>25,000,000 <u>đ</u></b></p>                          
+                        </div>
+                    </div>
+                </div>
+            </div> <!--row-->
+        </div> <!--sp-tuongtu-->
+
+
+<!--======================================================================================================================================================-->
+         <!-- 5. phần footer -->
+        <!-- Footer -->
+        <footer class="text-center text-lg-start bg-light text-muted">
+            <!-- Section: Social media -->
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+                <!-- Left -->
+                <div class="me-5 d-none d-lg-block">
+                    <span>Kết nối với chúng tôi trên các mạng xã hội</span>
+                </div>
+                <!-- Left -->
+            
+                <!-- Right -->
+                <div class="icon-mangxakoi">
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-facebook-f"></i>
+                      </a>
+                      <a href="" class="me-4 text-reset">
+                        <i class="fab fa-twitter"></i>
+                      </a>
+                      <a href="" class="me-4 text-reset">
+                        <i class="fab fa-google"></i>
+                      </a>
+                      <a href="" class="me-4 text-reset">
+                        <i class="fab fa-instagram"></i>
+                      </a>
+                      <a href="" class="me-4 text-reset">
+                        <i class="fab fa-youtube"></i>
+                      </a>
+                      
+                </div>
+                <!-- Right -->
+            </section>
+            <!-- Section: Social media -->
+        
+            <!-- Section: Links  -->
+            <section class="all-thongtin">
+                <div class="container text-center text-md-start mt-5">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                    <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 thongtin-lienhe">
+                            <!-- Content -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                <b><i>HOANGVIET TOURS</i></b>
+                            </h6>
+                            <div class="link-lienhe">
+                                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                                <a href="">123 Lý Thường Kiệt, Q.11, TP.HCM </a><br><br>
+                                <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                                <a href="">0123 456 789 </a><br><br>
+                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                <a href="">hoangviettous@gmail.com </a><br><br>
+                                <p>Đăng ký để được nhận thông tin khuyến mãi một cách nhanh chóng :</p>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email của ban...">
+                                <button type="submit" class="btn btn-default">Gửi</button>
+                            </div>
+                            
+                        </div>
+                        <!-- Grid column -->
+                
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 tieude-tt tintuc">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Tin tức
+                            </h6>
+                            <ul>
+                                <li><a href="#!" class="text-reset">Bản tin du lịch</a></li><br>
+                                <li><a href="#!" class="text-reset">Cẩm nang du lịch</a></li><br>
+                                <li><a href="#!" class="text-reset">Khám phá du lịch</a></li><br>
+                                <li><a href="#!" class="text-reset">Sự kiện du lịch</a></li><br>
+                                <li><a href="#!" class="text-reset">Tuyển dụng</a></li>  
+                            </ul>
+                        </div>
+                        <!-- Grid column -->
+                
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 tieude-tt">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Góc khách hàng
+                            </h6>
+                            <ul>
+                                <li><a href="#!" class="text-reset">Điều kiện & điều khoản</a></li><br>
+                                <li><a href="#!" class="text-reset">Quyền riêng tư</a></li><br>
+                                <li><a href="#!" class="text-reset">Chính sách bảo mật và thông tin</a></li><br>
+                                <li><a href="#!" class="text-reset">Ý kiến khách hàng</a></li><br>
+                                <li><a href="#!" class="text-reset">Phương thức thanh toán</a></li>  
+                            </ul>
+                        </div>
+                        <!-- Grid column -->
+  
+                </div>
+            </section> <!-- Section: Links  -->
+
+            <!-- Copyright -->
+            <div class="text-center p-4 banquyen">
+                © 2021 Copyright : HOANGVIETTOURS.com
+            </div> <!-- Copyright -->
+            
+        </footer> <!-- Footer -->
+ 
+    </body>
+</html>
+
