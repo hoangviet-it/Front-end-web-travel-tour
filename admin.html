@@ -6,6 +6,8 @@
 		<meta name= "keywords" content= "HTML, CSS, XML, JavaScript">
 		<meta name = "author" content = "Phạm Hoàng Việt">
 		<link rel="icon" type="image/png" href="./image/v.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./css/admin.css">
        
         <!--bootstrap 3-->
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
@@ -20,243 +22,7 @@
         
         <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
 
-		<title>Phạm Hoàng Việt </title>
-
-<!----================================================================================================================-->
-        <!--CSS-->
-        <style>
-           @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');    
-            /*@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');*/
-            html,body{
-              /*  font-family: 'Roboto', sans-serif;*/
-              /*font-family: 'Cabin', sans-serif;*/
-                font-family: 'Lato', sans-serif;
-                overflow-x: hidden;
-                background-color: #F5F5F5;
-            }
-            *{
-                margin: 0px;
-                padding: 0px;
-            }
-/*================================================================================================================*/
-            /* 1. phần header*/
-
-            .header{        /*thẻ header chứa all nội dung trên đầu*/
-                background-color: #EE6363;
-                width:100%;
-                height: 80px;
-                border-radius: 0px;
-                position: relative;
-                z-index: 1;         /*để headder năm trên menu tùy chọn bên trái*/
-                position: fixed;
-
-                display: flex;          /*định dạng lại flex của bootstrap*/
-                justify-content:space-between;     /*canh nội dung bát đầu bên trái*/
-            }
-            .header a{      /*tên công ty*/
-                margin-left: 20px;
-                font-size: 20px;    
-                margin-top: 20px;
-                text-decoration: none;
-                color: #fff;
-            }
-            .header input{     /*ô tìm kiếm*/
-                width: 33%;
-                margin-left: -22.5%;
-                margin-top: 20px;
-            }
-            .header .form-control{  /*chữ nhập nội dung*/
-                font-size: 15px;
-            }
-
-            .header .nut-tk{    /*nút tìm kiếm*/
-                width: 65px;
-                height: 34px;
-                margin-top: 20px;
-                margin-left: -32%;
-                background-color: #3399FF;
-                color: #fff;
-                border: none;
-                box-shadow: 0px 0px 4px #666666;
-                font-size: 12px;
-            }
-            .header .nut-tk:hover{          /*hover nút tìm kiếm*/
-                background-color: #2e8ae6;
-            }
-            .header .dropdown .admin{       /*phần chứa avatar + tên admin*/
-                width: 100%;
-                margin-left: -20%;
-                margin-top: 20px;
-            }
-
-            .header .dropdown img{ /*avatar user*/
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;           
-            }
-
-            .header .dropdown{     /*phần chứa dropdown-menu */
-                position: relative;
-            }
-
-            .header .dropdown .dropdown-menu{
-              position: absolute;             /*phần dropdown-menu ẩn*/
-              margin-left: -40%;
-              margin-top: -18px;
-              width: 150px;
-              height: 170px;
-              border-radius: 5px;
-              z-index: 1;   /*định dạng cho dropdown nằm trên tất cả để xổ xuống*/
-              
-            }
-            .header .dropdown .dropdown-menu li .dropdown-item{
-                margin-left: 1px;   /*phần chứa icon và chữ dropdơn-menu */
-            } 
-            .header .dropdown .dropdown-menu .li-1{
-                margin-top: -7px;
-            }                                   
-
-            .header .dropdown .dropdown-menu li a{
-                font-size: 14px;        /*chữ trong dropdown*/
-                
-            }
-            .header .dropdown #dLabel{       /*nút chứa tên admin*/
-                background-color:unset;   /*bỏ màu nền mặc định của bootstrap*/
-                color: #fff;
-                font-size: 16px;
-                border: none;   /*bỏ border có sẵn của bootstrap*/     
-            }
-
-/*================================================================================================================*/
-        /* 2. phần menu tùy chọn*/
-        #sidebarMenu {          /* nền menu trái*/
-            position: fixed;
-            height: 100vh;
-            background-color: #fff;
-            box-shadow: 3px 3px 5px #CCCCCC;
-            overflow-y: scroll;
-        }
-        .dm-quanly{
-            font-size: 18px;
-            font-weight: bold;
-            margin-left: 10px;
-        }
-        #sidebarMenu .position-sticky{  /*phần chứa nội dung menu-left*/
-            margin-top: 80px;
-        }
-        #sidebarMenu .position-sticky ul li{    /*các thành phần quản lý*/
-            padding-bottom: 10px;
-        }
-
-        #sidebarMenu .position-sticky .nav .nav-item a svg{
-            margin-top: -8px;   /*icon thành phần menu*/
-            color: #000;
-        }
-
-        #sidebarMenu .position-sticky .nav .nav-item a span{
-            font-size: 15px;   /*thành phần chữ*/
-            color: #000;
-        } 
-        .sidebar-heading span{      /*báo cáo đã lưu*/
-            font-size: 18px;
-            padding-bottom: 10px;
-            margin-left: 7px;
-        }
-
-/*================================================================================================================*/
-        /* 3. phần nội dung chính*/
-
-            /* cụm 1*/
-            .my-row{
-                width: 110%;
-            }
-            .my-row .khung-tk{  /*khung chứa tất cả cá khối thống kê*/
-                width: 110%;
-            }
-            .my-row .thanhpan-tk{      /*phần chứa từng nội dung khối thống kê*/
-                width: 110%;
-                height: 21.1%;
-                box-shadow: 0px 0px 7px #666666;
-                background-color: #fff;
-                font-size: 16px;
-                
-            }
-            .my-row .thanhpan-tk .p-1{     /*text dòng 1*/
-                font-weight: bold;
-                font-size: 18px;
-                margin-top: 20px; 
-                margin-left: 20px; 
-            }
-            .my-row .thanhpan-tk .p-2{     /* text dòng 2*/
-                float: left;
-                margin-left: 20px;
-  
-            }
-            .my-row .thanhpan-tk .khung-icon{      /* all khung chứa icon*/
-                width: 50px;
-                height: 50px;
-                margin-left: 180px;
-                margin-top: -26px;
-                text-align: center;
-            }
-            .my-row .thanhpan-tk .ic-1{      /*khung chứa icon doanh thu*/
-                background-color: #1abc9c;
-            }
-            .my-row .thanhpan-tk .ic-2{      /*khung chứa icon số lượng đặt*/
-                background-color: #30a5ff;
-            }
-            .my-row .thanhpan-tk .ic-3{      /*khung chứa icon kpi*/
-                background-color: #f36a5a;
-            }
-            .my-row .thanhpan-tk .ic-4{      /*khung chứa icon khách hàng mới*/
-                background-color: #fabe28;
-            }
-            .my-row .thanhpan-tk .icon{      /*icon */
-                margin-top: 15px;  
-                font-size: 25px;
-                color: #F5F5F5;
-            }
-            .my-row .khung-tk{      /*khung chứa cột 1 (lưới b.trap) doanh thu,...,...*/
-                width: 250px;
-            }
-            /*===============================================*/
-            /* cụm 2. sơ dô*/
-            .khung-sodo{
-                width: 67%;
-                height: 490px;
-                background-color: #fff;
-                margin-top: 20px;
-                margin-left: 3%;
-                padding: 30px;
-                box-shadow: 0px 0px 7px #666666;
-            }          
-
-            /*===============================================*/
-            /* cụm 3 table*/
-            .dashboard{         /*chữa dashboard phía trên*/
-                margin-top: 82px;
-            }
-
-            /*===============================================*/
-            .khung-table{               /*khung chứa bảng*/
-                width: 96.5%;
-                background-color: #fff;
-                margin-top: 20px;
-                margin-left: 0%;
-                padding: 30px;
-                box-shadow: 0px 0px 7px #666666;
-            }
-            .khung-table .d-flex{           /*tiêu đề của bảng*/
-                background-color: #fff;
-            }
-
-            .table {                        /*bảng*/
-                background-color: #fff;
-                width: 96.5%;
-            }
-
-
-        </style>
+		<title>HOANGVIET_TOURS </title>
     </head>
 
     <body>
@@ -269,7 +35,7 @@
 
             <div class="dropdown"> 
                 <div class="admin">                         
-                    <img src="image/19.jpg">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <img src="./image/avt.png">&nbsp;&nbsp;&nbsp;&nbsp;
                     <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Hoàng Việt
                         <span class="caret"></span>
@@ -368,7 +134,7 @@
                             </li>
                             
                             <li class="nav-item">
-                                <a class="nav-link" href="./Trangchu.html">
+                                <a class="nav-link" href="./index.html">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-journal" viewBox="0 0 16 16">
                                         <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
                                         <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
