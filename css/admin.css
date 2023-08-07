@@ -141,18 +141,22 @@ margin-left: 7px;
 
 /* cụm 1*/
 .my-row{
-    width: 110%;
+    width: 100%;
 }
 .my-row .khung-tk{  /*khung chứa tất cả cá khối thống kê*/
-    width: 110%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 .my-row .thanhpan-tk{      /*phần chứa từng nội dung khối thống kê*/
-    width: 110%;
-    height: 21.1%;
+    height: 120px;
     box-shadow: 0px 0px 7px #666666;
     background-color: #fff;
     font-size: 16px;
-    
+    margin-left: 20px;
+    margin-bottom: 20px;
+    padding-right: 20px;
 }
 .my-row .thanhpan-tk .p-1{     /*text dòng 1*/
     font-weight: bold;
@@ -189,9 +193,6 @@ margin-left: 7px;
     font-size: 25px;
     color: #F5F5F5;
 }
-.my-row .khung-tk{      /*khung chứa cột 1 (lưới b.trap) doanh thu,...,...*/
-    width: 250px;
-}
 /*===============================================*/
 /* cụm 2. sơ dô*/
 .khung-sodo{
@@ -202,6 +203,7 @@ margin-left: 7px;
     margin-left: 3%;
     padding: 30px;
     box-shadow: 0px 0px 7px #666666;
+    /* display: none; */
 }          
 
 /*===============================================*/
@@ -215,7 +217,7 @@ margin-left: 7px;
     width: 96.5%;
     background-color: #fff;
     margin-top: 20px;
-    margin-left: 0%;
+    margin-left: 20px;
     padding: 30px;
     box-shadow: 0px 0px 7px #666666;
 }
@@ -227,3 +229,15 @@ margin-left: 7px;
     background-color: #fff;
     width: 96.5%;
 }
+/* 
+@media only screen and (max-width: 1400px) {
+    .my-row .khung-tk {
+        flex-wrap: wrap;
+    }
+
+    .khung-sodo {
+        display: block;
+        margin-left: 100px;
+        height: 540px;
+    }
+} */
